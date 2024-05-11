@@ -1,0 +1,21 @@
+{
+  "name": "dark-minimalist-userstyles",
+  "version": "1.0.0",
+  "description": "Use Catppuccin usertyles and modify them with the Dark Minimalist color palette",
+  "main": "index.js",
+  "git": "https://github.com/LeonN534/Dark-Minimalist-userstyles",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "LeonN534",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "jszip": "^3.10.1",
+    "list-github-dir-content": "^3.0.0",
+    "p-map": "^7.0.2",
+    "p-retry": "^6.2.0",
+    "save-file": "^2.3.1"
+  }
+}
