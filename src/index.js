@@ -3,6 +3,8 @@ import path, { dirname } from 'path';
 import 'dotenv/config'
 import { fileURLToPath } from 'url';
 import { downloadStylesFiles } from './style-cloner.js';
+import { extractAndRemove} from './extract-and-remove-zip.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,8 +16,18 @@ fs.readdir(stylesDirectory, (err, files) => {
   if (err) throw err;
 
   for (const file of files) {
-    fs.unlink(path.join(stylesDirectory, file), err => {
+    let filePath = path.join(stylesDirectory, file);
+    fs.stat(filePath, (err, stats) => {
       if (err) throw err;
+      if (stats.isDirectory()) {
+        fs.rm(filePath, { recursive: true, force: true }, err => {
+          if (err) throw err;
+        });
+      } else {
+        fs.unlink(filePath, err => {
+          if (err) throw err;
+        });
+      }
     });
   }
 });
@@ -24,5 +36,12 @@ fs.readdir(stylesDirectory, (err, files) => {
 
 downloadStylesFiles(
   "https://github.com/catppuccin/userstyles/tree/main/styles"
-);
+).then(() => {
+  // Extract the files and remove the zip file
+  extractAndRemove();
+}).catch((err) => {console.error(err)});
+
+
+
+
 
