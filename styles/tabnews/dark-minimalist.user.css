@@ -1,0 +1,276 @@
+/* ==UserStyle==
+@name TabNews Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/tabnews
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/tabnews
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/tabnews/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Atabnews
+@description Minimalist design using the Dark Minimalist color palette for TabNews
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain('tabnews.com.br') {
+  :root:has(div[data-color-mode="dark"]) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+  :root:has(div[data-color-mode="light"]) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    --bgColor-default: @base;
+    --bgColor-emphasis: @crust;
+    --fgColor-default: @text;
+    --bgColor-neutral-emphasis: @subtext0;
+    --bgColor-accent-emphasis: @accent-color;
+    --fgColor-accent: @accent-color;
+    --fgColor-onEmphasis: @text;
+    --color-accent-fg: @accent-color;
+    --fgColor-muted: @overlay0;
+    --borderColor-default: @surface0;
+    --button-default-bgColor-rest: @base;
+    --button-default-bgColor-hover: @crust;
+    --button-default-fgColor-rest: @text;
+    --button-default-fgColor-hover: @text;
+    --button-primary-bgColor-rest: @accent-color;
+    --button-primary-bgColor-disabled: fadeout(@accent-color, 15%);
+    --button-primary-fgColor-disabled: @text;
+    --button-primary-fgColor-rest: @surface0;
+    --button-primary-bgColor-hover: darken(@accent-color, 5%);
+    --button-primary-fgColor-hover: @surface0;
+    --button-default-bgColor-active: @base;
+    --controlKnob-bgColor-rest: @crust;
+    --bgColor-accent-muted: @mantle;
+    --fgColor-danger: @red;
+    --button-danger-bgColor-hover: @red;
+    --control-danger-fgColor-hover: @red;
+    --control-danger-bgColor-hover: @mantle;
+    --bgColor-success-emphasis: @green;
+    --fgColor-success: @green;
+
+    input[type="checkbox"] {
+      --fgColor-onEmphasis: @surface0;
+    }
+
+    /* Create post box */
+    --codeMirror-fgColor: @text;
+    --bgColor-muted: @base;
+    --bgColor-inset: @base;
+    --color-prettylights-syntax-markup-heading: @text;
+    --color-prettylights-syntax-markup-inserted-text: @subtext0;
+    --color-prettylights-syntax-string: @blue;
+
+    /* Header */
+    --header-bgColor: @mantle;
+    --header-fgColor-default: @text;
+    --color-header-text: @text;
+    --header-fgColor-logo: @text;
+    --color-header-logo: @text;
+    --color-checks-input-placeholder-text: @text;
+    --headerSearch-bgColor: @mantle;
+    --headerSearch-borderColor: @overlay0;
+    --color-prettylights-syntax-variable: @mauve;
+    --color-prettylights-syntax-markup-list: @text;
+
+    #nprogress .bar {
+      background: @accent-color;
+    }
+
+    /* Style the button to change theme when light theme is on */
+    button[style="--button-color: #e7dfc3;"] svg {
+      color: @sky;
+    }
+
+    button[style="--button-color: #ecdc0f99;"] svg {
+      color: @yellow;
+    }
+
+    svg[fill="#0969da"] {
+      fill: @blue;
+    }
+    svg[fill="#2da44e"] {
+      fill: @green;
+    }
+
+    /* Style the "Status" page */
+    text {
+      fill: @text;
+    }
+
+    path.recharts-rectangle {
+      fill: @accent-color;
+    }
+
+    path.recharts-rectangle.recharts-tooltip-cursor {
+      fill: @overlay0;
+    }
+
+    div.recharts-default-tooltip {
+      border-color: @overlay0 !important;
+    }
+
+    li.recharts-tooltip-item {
+      color: @accent-color !important;
+    }
+
+    div[overflow="hidden"] {
+      border-color: @overlay0;
+      * {
+        border-color: @overlay0;
+      }
+    }
+
+    /* Style the "Search with Google" overlay box */
+    div[class*="Overlay__StyledOverlay"] {
+      background: @base;
+
+      h2 {
+        color: @text;
+      }
+
+      .gsc-control-cse {
+        background: @base;
+        border-color: transparent;
+      }
+
+      .gsc-input-box {
+        background: @base;
+        border-color: @overlay0;
+      }
+
+      .gsc-input {
+        background: transparent;
+        color: @text;
+      }
+
+      .gsc-search-button > button {
+        border-color: @overlay0;
+        background: @base !important;
+        svg {
+          fill: @text;
+        }
+      }
+    }
+
+    .gsc-completion-container {
+      background: @base !important;
+      border-color: @overlay0;
+
+      .gsc-completion-selected {
+        background: @crust;
+      }
+      span {
+        color: @text !important;
+      }
+    }
+
+    .gsc-refinementhActive,
+    .gsc-refinementhInactive {
+      color: @text;
+      background: @base;
+      border-color: @accent-color;
+    }
+
+    .gsc-option-menu-container {
+      color: @text;
+      .gsc-selected-option-container {
+        background: @base;
+        border-color: @text;
+        color: @text;
+      }
+      .gsc-option-menu {
+        background: @base;
+        .gsc-option-menu-item-highlighted {
+          background: @crust;
+        }
+      }
+    }
+
+    .gsc-result-info,
+    .gsc-orderby-label,
+    .gs-label,
+    .gs-title,
+    .gs-snippet,
+    .gsc-option-menu-item,
+    .gscb_a {
+      color: @text !important;
+      b {
+        color: @text !important;
+      }
+    }
+
+    .gsc-webResult {
+      border-color: transparent;
+      background: @base;
+      .gsc-url-top > * {
+        color: @accent-color;
+      }
+    }
+
+    .gsc-cursor-page {
+      background: @base;
+      color: @text;
+      border-color: @text;
+    }
+
+    .gcsc-find-more-on-google {
+      color: @text;
+      svg {
+        fill: @text;
+      }
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

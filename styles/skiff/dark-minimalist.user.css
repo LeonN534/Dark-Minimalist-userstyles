@@ -1,0 +1,235 @@
+/* ==UserStyle==
+@name Skiff Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/skiff
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/skiff
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/skiff/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Askiff
+@description Minimalist design using the Dark Minimalist color palette for Skiff
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("app.skiff.com") {
+  @media (prefers-color-scheme: light) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    html,
+    body {
+      /* main background colors */
+      --bg-main-container: @mantle !important;
+      --bg-l3-solid: @base !important;
+      --bg-l2-solid: @base !important;
+      --bg-sidepanel: @crust !important;
+      --bg-l1-solid: @crust !important;
+
+      /* Text fields and popups */
+      --bg-field-default: @mantle !important;
+
+      /* Text */
+      --text-primary: @text !important;
+      --text-secondary: @subtext1 !important;
+      --text-disabled: @subtext0 !important;
+      --text-tertiary: @subtext0 !important;
+      --text-link: @accent-color !important;
+      --text-destructive: @red !important;
+      --text-inverse: @crust !important;
+
+      --accent-green-primary: @green !important;
+    }
+
+    /* Link color when hovering over hotlinked text */
+    .eWCUQ {
+      color: @accent-color;
+    }
+
+    /* Unread dot */
+    .bguZwu {
+      background: @accent-color;
+    }
+
+    /* Change account/service dropdown and the tutorial popup, always dark mode regardless of setting */
+    & when not (@lookup = latte) {
+      /* Change account/service dropdown */
+      .fLWrAr {
+        background: @mantle;
+      }
+      .gWUKFc {
+        background: @base;
+      }
+
+      /* tutorial popup */
+      html,
+      body {
+        --bg-emphasis: @crust !important;
+      }
+      /* Pay with crypto header */
+      .cEYYtP {
+        background: @mantle !important;
+      }
+    }
+    & when (@lookup = latte) {
+      /* Change account/service dropdown */
+      .fLWrAr {
+        background: @darkMinimalist[@dm][@mantle];
+      }
+      .gWUKFc {
+        background: @darkMinimalist[@dm][@mantle];
+      }
+      /* tutorial popup */
+      html,
+      body {
+        --bg-emphasis: @darkMinimalist[@dm][@crust] !important;
+      }
+    }
+
+    /* Various dropdowns */
+    .optionMenu {
+      background: @crust !important;
+    }
+
+    /* Text in dropdowns */
+    .imrrcE,
+    .kvGqVe {
+      color: @text;
+    }
+    .dkQatM {
+      color: @subtext0;
+    }
+
+    /* Search menu */
+    .bFaRKt {
+      background: @mantle !important;
+    }
+    .enSdmg,
+    .cGshPA,
+    .epvcfe {
+      color: @subtext0;
+      caret-color: @accent-color;
+    }
+    .enSdmg:focus,
+    .cGshPA:focus,
+    .epvcfe:focus {
+      color: @text;
+    }
+
+    /* Mail, folder, and tag colors */
+    .dSuCgH {
+      border-color: @red !important;
+    }
+    .haItIx,
+    .eKPGmM,
+    .eihkWB {
+      background: @red;
+    }
+    .eaRVlP {
+      border-color: @peach !important;
+    }
+    .JtHzx,
+    .dKGpJJ,
+    .NfxrE {
+      background: @peach;
+    }
+    .hUzTMU {
+      border-color: @pink !important;
+    }
+    .gvwSHu,
+    .iJVhTi,
+    .gbLRlL {
+      background: @pink;
+    }
+    .eQGCyt {
+      border-color: @yellow !important;
+    }
+    .BJLiU,
+    .bdmXVU,
+    .cldAOh {
+      background: @yellow;
+    }
+    .jquNQm {
+      border-color: @green !important;
+    }
+    .fBWSzj,
+    .bmuMTf,
+    .dzrHbG {
+      background: @green;
+    }
+    .kmInNw {
+      border-color: @sapphire !important;
+    }
+    .dZaPlW,
+    .kHHBZC,
+    .ePjgmv {
+      background: @sapphire;
+    }
+    .gqLdmg {
+      border-color: @blue !important;
+    }
+    .dtLBu,
+    .gZiRxy,
+    .hccJrv {
+      background: @blue;
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

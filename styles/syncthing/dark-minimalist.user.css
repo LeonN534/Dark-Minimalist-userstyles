@@ -1,0 +1,342 @@
+/* ==UserStyle==
+@name Syncthing Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/syncthing
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/syncthing
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/syncthing/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Asyncthing
+@description Minimalist design using the Dark Minimalist color palette for Syncthing
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+
+@var text urls "URL(s) for Syncthing" "127\.0\.0\.1\:8384,0\.0\.0\.0\:8384,localhost\:8384"
+==/UserStyle== */
+
+/*
+  `replace(<stuff> ," ", "", "g")` is here to remove extra spaces (if any)
+*/
+
+@-moz-document regexp(replace(replace(%("https?://(%s)/.*", @urls), ",", "|", "g"), " ", "", "g"))
+{
+  @media (prefers-color-scheme: light) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  .light-theme {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  .dark-theme {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    body {
+      color: @text !important;
+      background-color: @base !important;
+    }
+
+    a {
+      color: @accent-color;
+    }
+
+    .nav-tabs > li.active > a:hover,
+    .nav-tabs > li.active > a {
+      color: @accent-color !important;
+    }
+
+    /* navbar */
+    .navbar {
+      background-color: @mantle !important;
+      border-color: @mantle !important;
+    }
+
+    .navbar-text,
+    .dropdown > a,
+    .dropdown-menu > li > a,
+    .hidden-xs > a,
+    .navbar-link {
+      color: @text !important;
+    }
+
+    .dropdown-menu {
+      border-color: @surface1 !important;
+      background-color: @mantle !important;
+    }
+
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus {
+      color: @text !important;
+      background-color: @surface0 !important;
+    }
+
+    .open > .dropdown-toggle,
+    .dropdown-toggle:hover {
+      border-color: @surface1 !important;
+      background-color: @surface0 !important;
+    }
+
+    .divider {
+      background-color: @surface1 !important;
+    }
+
+    li.hidden-xs:hover,
+    .navbar-link:hover,
+    .navbar-link:focus {
+      border-color: @surface1 !important;
+      background-color: @surface0 !important;
+    }
+
+    .dropdown-menu > .active > a {
+      color: @base !important;
+      background-color: @accent-color !important;
+    }
+
+    /* main panel */
+    .panel {
+      background-color: @base !important;
+    }
+
+    .panel-default {
+      border-color: @surface0 !important;
+    }
+
+    .panel-default > .panel-heading {
+      color: @text !important;
+      border-color: @surface0 !important;
+      background-color: @base !important;
+    }
+
+    .panel-footer {
+      background-color: @base !important;
+    }
+
+    .table-striped > tbody > tr {
+      border-top-color: @surface0 !important;
+    }
+
+    .table-striped > tbody > tr:nth-of-type(odd) {
+      background-color: @base !important;
+    }
+
+    .panel-group .panel-heading + .panel-collapse > .panel-body,
+    .panel-group .panel-heading + .panel-collapse > .list-group {
+      border-top-color: @base !important;
+    }
+
+    .identicon > rect {
+      fill: @text !important;
+    }
+
+    /* buttons */
+    .btn-default {
+      color: @text !important;
+      background-color: transparent !important;
+      border-color: @surface0 !important;
+    }
+
+    .btn-default:hover,
+    .btn-default:focus,
+    .btn-default.focus {
+      color: @text !important;
+      background-color: @surface0 !important;
+    }
+
+    .btn-primary {
+      background-color: @accent-color !important;
+      color: @base;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary.focus {
+      background-color: fade(@accent-color, 90%) !important;
+    }
+
+    .btn-warning {
+      background-color: @yellow !important;
+      color: @base;
+    }
+
+    .btn-warning:hover,
+    .btn-warning:focus,
+    .btn-warning.focus {
+      background-color: fade(@yellow, 90%) !important;
+    }
+
+    .btn-danger {
+      background-color: @red !important;
+      color: @base;
+    }
+
+    .btn-danger:hover,
+    .btn-danger:focus,
+    .btn-danger.focus {
+      background-color: fade(@red, 90%) !important;
+    }
+
+    /* modal dialogs */
+    .modal-header {
+      border-color: @surface0 !important;
+      background-color: @mantle;
+    }
+
+    .modal-content {
+      border-color: @surface0 !important;
+      background-color: @mantle !important;
+    }
+
+    .modal-footer {
+      border-color: @surface0 !important;
+      background-color: @mantle !important;
+    }
+
+    .alert-warning {
+      background-color: @yellow !important;
+      color: @base !important;
+    }
+
+    .alert-danger {
+      background-color: @red !important;
+      color: @base !important;
+    }
+
+    .help-block {
+      color: @text !important;
+    }
+
+    .form-control {
+      color: @text !important;
+      border-color: @surface0 !important;
+      background-color: @base !important;
+    }
+
+    code.ng-binding {
+      color: @mauve !important;
+      background-color: @mantle !important;
+    }
+
+    .well,
+    .form-control[readonly="readonly"] {
+      /* read-only fields */
+      color: @subtext0 !important;
+      border-color: @subtext0 !important;
+      background-color: @mantle !important;
+    }
+
+    /* buttons for pagination */
+    .pagination > li > a,
+    .pagination > li > span {
+      background-color: @base !important;
+      border-color: @surface0 !important;
+    }
+
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > a.focus {
+      background-color: @surface0 !important;
+    }
+
+    /* progress bars */
+    .progress-bar {
+      background-color: @accent-color !important;
+    }
+
+    .progress-bar-success {
+      background-color: @green !important;
+    }
+
+    .progress-bar-info {
+      background-color: @flamingo !important;
+    }
+
+    .progress-bar-warning {
+      background-color: @yellow !important;
+    }
+
+    .progress-bar-danger {
+      background-color: @red !important;
+    }
+
+    /* text */
+    .text-primary {
+      color: @accent-color !important;
+    }
+
+    .text-success {
+      color: @green !important;
+    }
+
+    .text-info {
+      color: @flamingo !important;
+    }
+
+    .text-warning {
+      color: @yellow !important;
+    }
+
+    .text-danger {
+      color: @red !important;
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

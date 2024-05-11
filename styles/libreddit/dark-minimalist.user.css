@@ -1,0 +1,181 @@
+/* ==UserStyle==
+@name Libreddit/Redlib Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/libreddit
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/libreddit
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/libreddit/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Alibreddit
+@description Minimalist design using the Dark Minimalist color palette for Libreddit and Redlib
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("libredd.it"),
+domain("libreddit.spike.codes"),
+domain("libreddit.dothq.co"),
+domain("libreddit.kavin.rocks"),
+domain("reddit.invak.id"),
+domain("reddit.phii.me"),
+domain("lr.riverside.rocks"),
+domain("libreddit.strongthany.cc"),
+domain("libreddit.database.red"),
+domain("libreddit.privacy.com.de"),
+domain("libreddit.domain.glass"),
+domain("libreddit.sugoma.tk"),
+domain("libreddit.jamiethalacker.dev"),
+domain("reddit.artemislena.eu"),
+domain("r.nf"),
+domain("libreddit.some-things.org"),
+domain("reddit.stuehieyr.com"),
+domain("lr.mint.lgbt"),
+domain("libreddit.igna.rocks"),
+domain("libreddit.autarkic.org"),
+domain("libreddit.flux.industries"),
+domain("libreddit.drivet.xyz"),
+domain("lr.oversold.host"),
+domain("libreddit.de"),
+domain("libreddit.pussthecat.org"),
+domain("libreddit.mutahar.rocks"),
+domain("libreddit.northboot.xyz"),
+domain("leddit.xyz"),
+domain("de.leddit.xyz"),
+domain("lr.cowfee.moe"),
+domain("libreddit.hu"),
+domain("libreddit.totaldarkness.net"),
+domain("libreddit.esmailelbob.xyz"),
+domain("lr.vern.cc"),
+domain("libreddit.nl"),
+domain("lr.stilic.ml"),
+domain("reddi.tk"),
+domain("libreddit.bus-hit.me"),
+domain("libreddit.datatunnel.xyz"),
+domain("libreddit.crewz.me"),
+domain("r.walkx.org"),
+domain("libreddit.kylrth.com"),
+domain("libreddit.yonalee.eu"),
+domain("libreddit.winscloud.net"),
+domain("libreddit.tiekoetter.com"),
+domain("reddit.rtrace.io"),
+domain("libreddit.lunar.icu"),
+domain("libreddit.privacydev.net"),
+domain("libreddit.notyourcomputer.net"),
+domain("r.ahwx.org"),
+domain("bob.fr.to"),
+domain("reddit.beparanoid.de"),
+domain("libreddit.dcs0.hu"),
+domain("reddit.dr460nf1r3.org"),
+domain("rd.jae.su"),
+domain("libreddit.mha.fi"),
+domain("libreddit.foss.wtf"),
+domain("libreddit.encrypted-data.xyz"),
+domain("libreddit.eu.org"),
+domain("l.opnxng.com"),
+domain("safereddit.com"),
+domain("libreddit.projectsegfau.lt"),
+domain("libreddit.bus-hit.me"),
+domain("reddit.invak.id"),
+domain("redlib.catsarch.com"),
+domain("reddit.idevicehacked.com"),
+domain("redlib.freedit.eu"),
+domain("redlib.perennialte.ch"),
+domain("redlib.tux.pizza"),
+domain("redlib.vimmer.dev"),
+domain("libreddit.privacydev.net"),
+domain("lr.n8pjl.ca"),
+domain("reddit.owo.si"),
+domain("redlib.ducks.party"),
+domain("red.ngn.tf"),
+domain("redlib.dnfetheus.xyz"),
+domain("redlib.cow.rip"),
+domain("libreddit.eu.org"),
+domain("r.darrennathanael.com"),
+domain("redlib.kittywi.re"),
+domain("redlib.privacyredirect.com") {
+  .light,
+  .gruvboxlight {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  .dark,
+  .black,
+  .doomone,
+  .gruvboxdark,
+  .dracula,
+  .gold,
+  .laserwave,
+  .nord,
+  .rosebox,
+  .violet,
+  :root {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    --accent: @accent-color !important;
+    --green: @green !important;
+    --text: @text !important;
+    --foreground: @crust !important;
+    --background: @base !important;
+    --outside: @mantle !important;
+    --post: @mantle !important;
+    --panel-border: none !important;
+    --highlighted: @surface0 !important;
+    --visited: @overlay0 !important;
+    --shadow: 0 5px 15px 0 transparent !important;
+
+    --nsfw: @peach !important;
+    --admin: @maroon !important;
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

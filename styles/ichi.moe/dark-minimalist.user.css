@@ -1,0 +1,424 @@
+/* ==UserStyle==
+@name ichi.moe Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/ichi.moe
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/ichi.moe
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/ichi.moe/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Aichi.moe
+@description Minimalist design using the Dark Minimalist color palette for ichi.moe
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+
+@var checkbox zen "Zen Mode" 0
+==/UserStyle== */
+
+@-moz-document domain("ichi.moe") {
+  @media (prefers-color-scheme: light) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    html,
+    body {
+      background: @base;
+      color: @text;
+    }
+
+    footer {
+      color: @subtext1;
+    }
+
+    span.query-word:hover {
+      border-color: @pink;
+    }
+
+    .panel-error {
+      background-color: fadeout(@red, 0.2);
+    }
+
+    .highlight {
+      background-color: fadeout(@yellow, 0.2);
+    }
+
+    .gloss {
+      & when (@lookup ="latte") {
+        background-color: @base;
+        border-color: @surface2;
+      }
+      background-color: @surface0;
+      border-color: @overlay0;
+    }
+
+    .gloss-rtext {
+      & when (@lookup ="latte") {
+        border-color: @surface2;
+      }
+      border-color: @overlay0;
+    }
+
+    .gloss:target {
+      & when (@lookup ="latte") {
+        box-shadow: 0 0 5px @surface2;
+        -webkit-box-shadow: 0 0 5px @surface2;
+        -moz-box-shadow: 0 0 5px @surface2;
+      }
+      box-shadow: 0 0 5px @overlay0;
+      -webkit-box-shadow: 0 0 5px @overlay0;
+      -moz-box-shadow: 0 0 5px @overlay0;
+    }
+
+    a {
+      color: @sapphire;
+    }
+
+    a.wiktionary-link {
+      color: @text;
+    }
+
+    a.info-link {
+      color: @text;
+    }
+
+    a.info-link:hover {
+      border-bottom-color: @sapphire;
+    }
+
+    .note-skipped a {
+      color: @subtext1;
+    }
+
+    .note-skipped a:hover {
+      border-color: @subtext1;
+    }
+
+    .jspDrag {
+      & when (@lookup ="latte") {
+        background-color: @surface1;
+      }
+      background-color: @surface2;
+    }
+
+    .conj-negative {
+      color: @red;
+    }
+
+    .conj-formal {
+      color: @blue;
+    }
+
+    .pos-desc {
+      color: @green;
+    }
+
+    .reading-table tr:nth-of-type(2n) {
+      & when (@lookup ="latte") {
+        background: fadeout(@surface0, 0.5);
+      }
+      background: fadeout(@surface1, 0.5);
+    }
+
+    table.kanji-match tr:nth-of-type(2n) {
+      & when (@lookup ="latte") {
+        background: fadeout(@surface0, 0.5);
+      }
+      background: fadeout(@surface1, 0.5);
+    }
+
+    .kanji-big a {
+      color: @subtext1;
+    }
+
+    .autocomplete-suggestions {
+      & when (@lookup ="latte") {
+        background: @base;
+        border-color: @surface2;
+      }
+      background: @surface0;
+      border-color: @overlay0;
+    }
+
+    .autocomplete-selected {
+      & when (@lookup ="latte") {
+        background: @base;
+      }
+      background: @surface0;
+    }
+
+    .autocomplete-suggestions strong {
+      color: @lavender;
+    }
+
+    .autocomplete-group strong {
+      border-bottom-color: @text;
+    }
+
+    .button {
+      background-color: @sapphire;
+      border-color: @sapphire;
+      color: @base;
+    }
+
+    button:hover,
+    button:focus,
+    .button:hover,
+    .button:focus {
+      background-color: darken(@sapphire, 25%);
+      color: @base;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: @text;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="week"],
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    input[type="color"],
+    textarea,
+    input[type="file"],
+    input[type="checkbox"],
+    input[type="radio"],
+    select,
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="date"]:focus,
+    input[type="datetime"]:focus,
+    input[type="datetime-local"]:focus,
+    input[type="month"]:focus,
+    input[type="week"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    input[type="search"]:focus,
+    input[type="tel"]:focus,
+    input[type="time"]:focus,
+    input[type="url"]:focus,
+    input[type="color"]:focus,
+    textarea:focus,
+    input[type="file"]:focus,
+    input[type="checkbox"]:focus,
+    input[type="radio"]:focus,
+    select:focus {
+      & when (@lookup ="latte") {
+        background-color: @base;
+        border-color: @surface0;
+      }
+      background-color: @surface0;
+      border-color: @surface1;
+      color: @text;
+    }
+
+    .header-nav a {
+      color: @pink;
+    }
+
+    .header-nav a:hover {
+      color: darken(@pink, 15%);
+    }
+
+    .jspTrack {
+      & when (@lookup ="latte") {
+        background: @surface0;
+      }
+      background: @surface1;
+    }
+
+    .f-dropdown {
+      & when (@lookup ="latte") {
+        background-color: @base;
+      }
+      background-color: @surface0;
+      border-color: @subtext1;
+    }
+
+    .f-dropdown::before {
+      border-color: transparent transparent @subtext1 transparent;
+    }
+
+    span.query-pick {
+      color: @text;
+    }
+
+    .has-tip {
+      color: @subtext1;
+      border-color: @overlay1;
+    }
+
+    .has-tip:hover,
+    .has-tip:focus {
+      border-bottom-color: @sapphire;
+      color: @sapphire;
+    }
+
+    label {
+      color: @subtext1;
+    }
+
+    table {
+      background: @base;
+      & when (@lookup ="latte") {
+        background-color: @surface0;
+      }
+      background-color: @surface1;
+    }
+
+    table tr th,
+    table tr td {
+      color: @subtext1;
+    }
+
+    .kanji-table td {
+      & when (@lookup ="latte") {
+        border-color: @surface0;
+      }
+      border-color: @surface1;
+    }
+
+    table tr.even,
+    table tr.alt,
+    table tr:nth-of-type(2n) {
+      & when (@lookup ="latte") {
+        background: fadeout(@surface0, 0.5);
+      }
+      background: fadeout(@surface1, 0.5);
+    }
+
+    .reading-table tr ~ tr > td {
+      & when (@lookup ="latte") {
+        border-color: @surface0;
+      }
+      border-color: @surface1;
+    }
+
+    table.kanji-match td {
+      & when (@lookup ="latte") {
+        border-color: @surface0;
+      }
+      border-color: @surface1;
+    }
+
+    tr.match-row-kanji,
+    tr.match-row-reading {
+      & when (@lookup ="latte") {
+        border-color: @surface0;
+      }
+      border-color: @surface1;
+    }
+
+    img {
+      filter: contrast(1.2) opacity(85%);
+    }
+
+    /* Options */
+    & when (@zen = 1) {
+      .header,
+      footer,
+      .landing-page {
+        display: none;
+      }
+
+      div.wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        place-content: center center;
+        padding: 50px 0;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .gloss-all {
+        width: 100%;
+        padding: 0 10px;
+      }
+
+      #div-ichiran-result {
+        padding: 0 10px;
+      }
+
+      #div-kanji-form,
+      #w-form {
+        width: 100%;
+      }
+
+      #k-form > div > div,
+      #w-form > div > div {
+        width: 100%;
+        max-width: 304px;
+      }
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

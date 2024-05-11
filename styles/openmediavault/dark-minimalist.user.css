@@ -1,0 +1,267 @@
+/* ==UserStyle==
+@name openmediavault Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/openmediavault
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/openmediavault
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/openmediavault/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Aopenmediavault
+@description Minimalist design using the Dark Minimalist color palette for openmediavault
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("openmediavault.example.com") {
+  @media (prefers-color-scheme: light) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+  @media (prefers-color-scheme: dark) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    .omv-dark-theme {
+      --mat-color-text: @text;
+      --mat-color-secondary-text: @subtext0;
+      --mat-color-disabled-text: @red;
+      --mat-color-hint-text: @blue;
+      --mat-background-color-hover: @accent-color;
+      --mat-background-color-selected-button: @accent-color;
+      --mat-background-color-card: @crust;
+      --mat-background-color-background: @crust;
+      --mat-primary-color-text: @accent-color;
+      --mat-background-color-body: @base;
+    }
+    .omv-dark-theme .mat-toolbar.mat-primary {
+      background: @accent-color;
+      color: @text;
+    }
+    .omv-dark-theme .mat-drawer-container {
+      background-color: @base;
+      color: @text;
+    }
+
+    .omv-dark-theme .mat-card {
+      background: @mantle;
+      color: @text;
+    }
+
+    .omv-dark-theme .mat-flat-button,
+    .mat-fab,
+    .mat-mini-fab {
+      color: @text;
+      background-color: @crust;
+    }
+    .omv-dark-theme .mat-flat-button.mat-button-disabled.mat-button-disabled {
+      background-color: @mantle;
+    }
+    .omv-dark-theme .mat-input-element:disabled {
+      color: @subtext0;
+    }
+    .omv-dark-theme .mat-select-placeholder,
+    .omv-dark-theme .mat-select-disabled .mat-select-value {
+      color: @subtext0;
+    }
+    .omv-dark-theme .mat-form-field-appearance-legacy .mat-form-field-label,
+    .omv-dark-theme .mat-form-field-appearance-legacy .mat-hint {
+      color: @accent-color;
+    }
+    .omv-dark-theme .mat-toolbar {
+      background: @crust;
+      color: @text;
+    }
+    .omv-top-bar[_ngcontent-ydq-c112]
+      button[_ngcontent-ydq-c112]
+      .mat-icon[_ngcontent-ydq-c112] {
+      color: @crust;
+    }
+    .omv-top-bar[_ngcontent-ydq-c112] .hostname[_ngcontent-ydq-c112] {
+      color: @crust;
+    }
+
+    .omv-dark-theme .mat-icon-button.mat-button-disabled.mat-button-disabled {
+      color: @overlay0;
+    }
+    .omv-dark-theme .mat-chip.omv-background-color-pair-green {
+      color: @mantle;
+      background-color: @green;
+    }
+
+    .omv-scrollable-xy,
+    .omv-scrollable-y {
+      scrollbar-color: @accent-color transparent;
+      --scrollbar-thumb-color: @accent-color !important;
+      --scrollbar-thumb-hover-color: @accent-color;
+    }
+
+    .omv-dark-theme .mat-button,
+    .omv-dark-theme .mat-icon-button,
+    .omv-dark-theme .mat-stroked-button {
+      color: @accent-color;
+      background: inherit;
+    }
+
+    .omv-dark-theme .mat-pseudo-checkbox-checked,
+    .omv-dark-theme .mat-pseudo-checkbox-indeterminate,
+    .omv-dark-theme .mat-accent .mat-pseudo-checkbox-checked,
+    .omv-dark-theme .mat-accent .mat-pseudo-checkbox-indeterminate {
+      background: @accent-color;
+    }
+    .omv-dark-theme
+      .mat-checkbox-indeterminate.mat-accent
+      .mat-checkbox-background,
+    .omv-dark-theme .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+      background-color: @accent-color;
+    }
+    .omv-dark-theme .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+      background-color: @accent-color;
+    }
+    .omv-dark-theme .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+      background-color: @accent-color;
+    }
+    .omv-dark-theme .mat-badge-accent .mat-badge-content {
+      background: @crust;
+      color: @accent-color;
+    }
+
+    .omv-dark-theme .mat-select-panel {
+      scrollbar-color: @accent-color transparent;
+      --scrollbar-thumb-color: @accent-color !important;
+      --scrollbar-thumb-hover-color: @accent-color !important;
+      background: @crust;
+    }
+
+    .omv-background-color-pair-success {
+      color: @mantle;
+      background-color: @green;
+    }
+    .omv-dark-theme
+      .mat-primary
+      .mat-option.mat-selected:not(.mat-option-disabled) {
+      color: @accent-color;
+    }
+
+    .ngx-datatable.single-selection .datatable-body-row.active,
+    .ngx-datatable.single-selection
+      .datatable-body-row.active
+      .datatable-row-group,
+    .ngx-datatable.multi-selection .datatable-body-row.active,
+    .ngx-datatable.multi-selection
+      .datatable-body-row.active
+      .datatable-row-group,
+    .ngx-datatable.multi-click-selection .datatable-body-row.active,
+    .ngx-datatable.multi-click-selection
+      .datatable-body-row.active
+      .datatable-row-group {
+      color: @accent-color;
+      background-color: @crust;
+    }
+
+    .ngx-datatable:not(.cell-selection) .datatable-body-row:hover,
+    .ngx-datatable:not(.cell-selection)
+      .datatable-body-row:hover
+      .datatable-row-group {
+      color: @crust;
+      background-color: @blue;
+    }
+
+    .ngx-datatable.single-selection .datatable-body-row.active:hover,
+    .ngx-datatable.single-selection
+      .datatable-body-row.active:hover
+      .datatable-row-group,
+    .ngx-datatable.multi-selection .datatable-body-row.active:hover,
+    .ngx-datatable.multi-selection
+      .datatable-body-row.active:hover
+      .datatable-row-group,
+    .ngx-datatable.multi-click-selection .datatable-body-row.active:hover,
+    .ngx-datatable.multi-click-selection
+      .datatable-body-row.active:hover
+      .datatable-row-group {
+      color: @crust;
+      background-color: @green;
+    }
+
+    .omv-dark-theme .mat-menu-item {
+      background: @crust;
+      color: @text;
+    }
+
+    .omv-dark-theme .mat-menu-panel {
+      background: @crust;
+    }
+
+    [_nghost-ckr-c138]
+      .content[_ngcontent-ckr-c138]
+      omv-intuition-form-page[_ngcontent-ckr-c138]
+      .mat-card {
+      color: @text;
+      background-color: @mantle;
+    }
+
+    .mat-flat-button.omv-background-color-pair-primary {
+      color: @text;
+      background-color: @crust;
+    }
+
+    .omv-dark-theme .mat-dialog-container {
+      background: @crust;
+      color: @text;
+    }
+
+    .omv-background-color-pair-terminal {
+      color: @green;
+      background-color: @mantle;
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

@@ -1,0 +1,592 @@
+/* ==UserStyle==
+@name Hackage Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/hackage
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/hackage
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/hackage/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Ahackage
+@description Minimalist design using the Dark Minimalist color palette for Hackage
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("hackage.haskell.org") {
+  @media (prefers-color-scheme: light) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    &,
+    body {
+      background-color: @base;
+      color: @text;
+    }
+
+    a:hover {
+      background-color: inherit;
+    }
+
+    a[href]:link {
+      color: @accent-color;
+    }
+    a[href]:visited {
+      color: average(@overlay2, @accent-color);
+    }
+
+    a[href].def:link,
+    a[href].def:visited {
+      color: @subtext0;
+    }
+    a[href].def:hover {
+      color: average(@overlay2, @subtext0);
+    }
+
+    .caption,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    summary {
+      color: overlay(@accent-color, @surface0);
+      filter: none;
+    }
+
+    .collapser::before,
+    .expander::before,
+    .noexpander::before {
+      color: @accent-color;
+    }
+
+    pre {
+      background-color: @mantle;
+      border-color: @surface1;
+    }
+
+    blockquote {
+      background-color: @surface0;
+      border-color: @accent-color;
+    }
+
+    .src {
+      background-color: @mantle;
+    }
+
+    /*
+     * Headers
+     */
+
+    #page-header,
+    #package-header {
+      background-color: @accent-color;
+      color: @surface1;
+      border-color: shade(@accent-color, 25%);
+    }
+
+    #page-header .caption,
+    #package-header .caption,
+    #page-header a:link,
+    #page-header a:visited {
+      color: @base !important;
+    }
+
+    #module-header .caption {
+      color: @accent-color;
+      border-color: @surface1;
+    }
+
+    #module-header {
+      background-color: inherit;
+    }
+
+    #package-header {
+      &,
+      #page-menu {
+        a:link,
+        a:visited {
+          color: @base;
+        }
+      }
+      a:hover {
+        background-color: transparent;
+      }
+
+      ul.links li {
+        border-color: @overlay0;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+
+    ul.links li form {
+      input,
+      button {
+        color: @base;
+      }
+    }
+
+    /*
+     * Style selectors (for old packages)
+     */
+
+    #style-menu {
+      background-color: @mantle;
+
+      li {
+        &,
+        a {
+          color: @text !important;
+        }
+        + li {
+          border-color: @overlay2;
+        }
+      }
+    }
+
+    /*
+     * Versions
+     */
+
+    a.unpreferred[href]:link,
+    a.unpreferred[href]:visited {
+      color: @yellow;
+    }
+
+    a.deprecated[href]:link,
+    a.deprecated[href]:visited {
+      color: @red;
+    }
+
+    .versions {
+      a.normal[href]:link,
+      a.normal[href]:visited {
+        color: @green;
+      }
+    }
+
+    /*
+     * Readme style
+     */
+
+    .embedded-author-content {
+      border-color: @accent-color;
+    }
+
+    /*
+     * Contents & synopsis
+     */
+
+    #contents-list {
+      background-color: @mantle;
+    }
+
+    #table-of-contents {
+      background-color: @base;
+      border-color: @surface1;
+    }
+
+    #synopsis {
+      summary {
+        color: transparent;
+      }
+
+      ul {
+        &,
+        li.src {
+          background-color: @surface0;
+        }
+      }
+    }
+
+    /*
+     * Tables
+     */
+
+    table {
+      &.info {
+        background-color: @base;
+        color: @subtext1;
+        border-color: @surface1;
+      }
+
+      &.fancy {
+        &,
+        tr {
+          border-color: @surface1;
+        }
+        tr.even td {
+          background-color: @mantle;
+        }
+      }
+
+      &.fancy,
+      &.properties,
+      &.dataTable.compact.fancy tbody {
+        th,
+        td {
+          background-color: @base;
+        }
+      }
+    }
+
+    .doc {
+      th,
+      td {
+        border-color: @surface1;
+      }
+      th {
+        background-color: @mantle;
+      }
+    }
+
+    div#table_length.dataTables_length,
+    div#table_filter.dataTables_filter {
+      color: @text;
+    }
+
+    div #description table {
+      &,
+      tr td {
+        border-color: @surface1;
+      }
+      th {
+        background-color: @mantle;
+      }
+    }
+
+    /*
+     * Source links
+     */
+
+    #interface {
+      .src {
+        .selflink .link {
+          color: @overlay2;
+        }
+      }
+      p.src .link {
+        background-color: transparent;
+        color: @overlay2;
+        border-color: @overlay1;
+      }
+
+      span.fixity,
+      span.rightedge {
+        color: @overlay1;
+        border-left-color: @overlay1;
+      }
+      span.fixity {
+        color: @overlay1;
+      }
+    }
+
+    /*
+     * Paginator
+     */
+
+    .paginator {
+      span {
+        color: @text;
+      }
+
+      a {
+        color: @overlay1;
+
+        &[href]:link,
+        &:link:hover {
+          color: @accent-color;
+        }
+        &:visited,
+        &:visited:hover {
+          color: average(@overlay2, @accent-color);
+        }
+        &:link:hover,
+        &:visited:hover {
+          background-image: none;
+          background-color: @surface1;
+          border-color: transparent;
+        }
+      }
+
+      .current,
+      .current:hover {
+        background-image: none;
+        background-color: @surface0;
+        color: @accent-color;
+        border-color: transparent;
+      }
+    }
+
+    .paginate_button {
+      background-color: @overlay0;
+    }
+
+    /*
+     * Search query
+     */
+
+    #browseTable th {
+      border-color: @surface1;
+    }
+
+    #fatalError {
+      color: @red;
+    }
+
+    input:invalid {
+      border-color: @yellow;
+      box-shadow: 0 0 10px @yellow;
+    }
+
+    input {
+      background-color: @mantle;
+      border-style: solid;
+      border-color: @surface0;
+      border-radius: 4px;
+    }
+
+    input[type="range"] {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: @mantle;
+      height: 0.2em !important;
+
+      &::-moz-range-thumb,
+      &::-webkit-slider-thumb {
+        background-color: @text;
+        border-color: @surface0;
+        height: 1em !important;
+      }
+    }
+
+    input[type="range"]:hover,
+    input[type="submit"]:hover {
+      background-color: @crust;
+    }
+
+    /*
+     * Others
+     */
+
+    .candidate-warn {
+      background-color: @mantle;
+      border-color: @red;
+    }
+
+    .candidate-info {
+      background-color: @mantle;
+      border-color: @blue;
+    }
+
+    .box {
+      background-color: @base;
+      border-color: @base;
+    }
+
+    div#modal #content,
+    #search-results {
+      background-color: @surface0;
+    }
+
+    .subs,
+    .top > .doc,
+    .subs > .doc {
+      border-left-color: @surface1;
+    }
+
+    .subs .subs p.src {
+      background-color: @mantle;
+    }
+
+    .top p.src {
+      border-color: @surface0;
+    }
+
+    .warning,
+    strong.warning {
+      color: @red;
+    }
+
+    small.info,
+    .flags-table .flag-disabled {
+      color: @subtext0;
+    }
+
+    .text-button {
+      color: @accent-color;
+    }
+
+    p.registration-email {
+      border-color: @accent-color;
+    }
+
+    :target {
+      background-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 65%,
+        average(@surface0, @yellow) 60%,
+        average(@surface0, @yellow) 100%
+      );
+    }
+    :target:hover {
+      background-image: linear-gradient(
+        to bottom,
+        overlay(@surface0, @yellow) 0%,
+        overlay(@surface0, @yellow) 100%
+      );
+    }
+
+    #footer {
+      background-color: @crust;
+      color: @subtext1;
+      border-color: @overlay0;
+    }
+
+    #MathJax_Message {
+      background-color: @mantle;
+      border-color: @surface1;
+      color: @text;
+    }
+
+    /*
+     * Sources
+     */
+
+    /* Old */
+
+    .hs-keyglyph,
+    .hs-layout {
+      color: @overlay2;
+    }
+    .hs-comment a {
+      color: @overlay0;
+    }
+    .hs-str,
+    .hs-chr {
+      color: @green;
+    }
+
+    /* Modern */
+
+    .hs-identifier {
+      color: @blue;
+    }
+    .hs-identifier.hs-type {
+      color: @yellow;
+    }
+    .hs-keyword {
+      color: @mauve;
+    }
+    .hs-string,
+    .hs-char {
+      color: @green;
+    }
+    .hs-number {
+      color: @peach;
+    }
+    .hs-operator {
+      color: @sky;
+    }
+    .hs-glyph,
+    .hs-special {
+      color: @overlay2;
+    }
+    .hs-comment {
+      color: @overlay0;
+    }
+    .hs-pragma {
+      color: @pink;
+    }
+    .hs-cpp {
+      color: @pink;
+    }
+
+    pre a {
+      &:link,
+      &:visited {
+        border-bottom-color: @surface0;
+      }
+      &:hover,
+      &.hover-highlight {
+        background-color: @surface0;
+      }
+    }
+
+    span.annot {
+      color: @text;
+
+      &:hover {
+        background-color: @surface1;
+      }
+
+      span.annottext {
+        background-color: @surface0;
+        border-color: @accent-color;
+      }
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

@@ -1,0 +1,394 @@
+/* ==UserStyle==
+@name Bluesky Social Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/bsky
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/bsky
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/bsky/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Absky
+@description Minimalist design using the Dark Minimalist color palette for Bluesky Social
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain('bsky.app') {
+  @media (prefers-color-scheme: light) {
+    html.colorMode--system {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    html.colorMode--system {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  html.theme--light {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+  html.theme--dim,
+  html.theme--dark {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    --text: @text;
+    --background: @base;
+    --backgroundLight: @base;
+
+    /* generic text */
+    [style*="color: rgb(255, 255, 255)"] {
+      color: @text !important;
+      & when (@lookup = latte) {
+        /* fix button text in latte */
+        color: @base !important;
+      }
+    }
+
+    /* secondary text */
+    [style*="rgb(163, 178, 194)"] {
+      color: @subtext1 !important;
+    }
+
+    /* generic blue inline */
+    [style*="color: rgb(16, 131, 254)"] {
+      color: @accent-color !important;
+    }
+
+    /* blue svg inline */
+    [stroke="hsl(211, 99%, 53%)"],
+    [stroke="#0085ff"] {
+      stroke: @accent-color;
+    }
+
+    [fill="hsl(211, 99%, 53%)"],
+    [fill="#0085ff"] {
+      fill: @accent-color;
+    }
+
+    /* a lot of blue things (buttons etc) */
+    div[style*="background-color: rgb(0, 133, 255)"] {
+      background-color: @accent-color !important;
+    }
+
+    /* red button text (delete my account) */
+    [style*="color: rgb(251, 162, 178)"] {
+      color: @red !important;
+    }
+
+    /* delete account button */
+    [style^="background-color: rgb(79, 3, 20)"] {
+      background-color: @red !important;
+    }
+    path[fill="#fba2b2"] {
+      fill: @crust;
+    }
+
+    /* generic background color */
+    .css-175oi2r.r-13awgt0,
+    [style*="background-color: rgb(255, 255, 255)"],
+    [style*="background-color: rgb(0, 0, 0)"],
+    [style*="background-color: rgb(8, 10, 12)"] {
+      background-color: @base !important;
+
+      & when (@lookup = latte) {
+        /* fix button colors in latte */
+        [style*="background-color: rgb(0, 0, 0)"] {
+          background-color: @text !important;
+        }
+      }
+    }
+
+    /* secondary background color */
+    [style*="background-color: rgb(20, 25, 31)"] {
+      background-color: @mantle !important;
+    }
+
+    /* loading circle */
+    circle[style^="stroke: rgb(25, 118, 210)"] {
+      stroke: @accent-color !important;
+    }
+
+    /* wide site: new post button (w text) */
+    .r-wzwllv {
+      background-color: @accent-color !important;
+    }
+
+    /* borders */
+    .css-175oi2r {
+      border-color: @surface0 !important;
+    }
+
+    /* fix selected tab bottom border issue caused by selector above */
+    .css-175oi2r[style*="border-bottom-color: rgb(0, 133, 255)"] {
+      border-bottom-color: @accent-color !important;
+    }
+
+    /* fixes the bottom border on tabs (timeline) having a darker color */
+    .r-oucylx {
+      border-bottom-color: @base !important;
+    }
+
+    /* current selected tab (acc page) !! KEEP THIS BELOW ABOVE DEFINITION !! */
+    [style*="border-color: rgb(255, 255, 255)"] {
+      border-color: @accent-color !important;
+    }
+
+    /* settings highlight thing */
+    [style="background-color: rgb(38, 39, 45)"] {
+      background-color: @crust !important;
+    }
+
+    /* heart/like */
+    .r-84gixx,
+    .r-1i89l9k {
+      color: @red;
+    }
+
+    /* repost */
+    .r-5ld2xk {
+      color: @green;
+    }
+
+    /* thin site: bluesky text */
+    .r-yovm8p {
+      color: @blue;
+    }
+
+    /* empty profile banner */
+    .r-wuyfte {
+      background-color: @blue;
+    }
+
+    /* "invalid handle" warning */
+    [style*="color: rgb(236, 72, 104); border-color: rgb(209, 16, 67)"] {
+      color: @red !important;
+      border-color: @red !important;
+    }
+
+    /* end of feed text */
+    .r-1521r3q {
+      color: @overlay1;
+    }
+
+    /* mobile side drawer */
+    [data-testid="drawer"] {
+      background-color: @base;
+    }
+
+    /* feedback */
+    .r-m7buhn {
+      background-color: @blue;
+    }
+
+    /* save, report, post modal button */
+    [data-testid="saveBtn"] > div,
+    [data-testid="sendReportBtn"] > div,
+    [data-testid="composerPublishBtn"] > div,
+    [data-testid="editProfileSaveBtn"] > div {
+      background: unset !important;
+      background-color: @accent-color !important;
+    }
+
+    .r-jwli3a {
+      color: @base !important;
+    }
+
+    /* draft "Discard" button */
+    [style^="background-color: rgb(209, 16, 67)"] {
+      background-color: @red !important;
+    }
+
+    /* the round gradient post button in the bottom right when the page is thinner than usual */
+    [style*="background-image: linear-gradient(2.35619rad, rgb(90, 113, 250), rgb(0, 133, 255))"] {
+      background: unset !important;
+      background-color: @accent-color !important;
+    }
+
+    /* several white buttons */
+    button[style*="background-color: rgb(255, 255, 255)"]
+      when
+      not
+      (@lookup = latte) {
+      background-color: @text !important;
+    }
+
+    /* the white buttons text */
+    [style*="color: rgb(0, 0, 0)"] {
+      color: @crust !important;
+    }
+
+    /* replace dark fill icons with crust ones */
+    path[fill="#000000"] {
+      fill: @crust;
+    }
+
+    /* fixes a contrast issue when the suggested follows button is enabled (very ugly selector) */
+    button[data-testid="suggestedFollowsBtn"][style*="background-color: rgb(255, 255, 255)"]
+      > svg
+      > path {
+      fill: @base !important;
+    }
+
+    /* text inside most buttons */
+    button > div > div[style~="color: rgb(0, 0, 0)"] {
+      color: @base !important;
+    }
+
+    /* search bar text */
+    [role="search"],
+    [data-testid="confirmCodeInput"] {
+      --placeholderTextColor: @subtext1 !important;
+    }
+
+    /* search bar icon */
+    svg[style^="color: rgb(141, 142, 150)"] {
+      color: @subtext1 !important;
+    }
+
+    /* small icons */
+    path[fill="#ffffff"],
+    path[fill="hsl(211, 20%, 100%)"] {
+      fill: @text;
+
+      & when (@lookup = latte) {
+        fill: @base;
+      }
+    }
+
+    /* more gray small icons (seems to only be the trash can/delete icon) */
+    path[fill="#8D8E96"] {
+      fill: @subtext1;
+    }
+
+    /* settings button at the top of the timeline */
+    path[fill="hsl(211, 20%, 70%)"] {
+      fill: @subtext1;
+    }
+
+    /* x invite codes available icon */
+    div[style*="background-color: rgb(191, 225, 255)"],
+    div[style*="background-color: rgb(1, 37, 97)"] {
+      background-color: fadeout(@accent-color, 70%) !important;
+      > svg > path[fill="#52acfe"] {
+        fill: @accent-color;
+      }
+    }
+
+    /* likes, reposts and comment counts under posts */
+    [style*="color: rgb(102, 127, 153)"] {
+      color: @subtext0 !important;
+    }
+
+    /* onboarding: continue/next button */
+    [data-testid="continueBtn"] {
+      background-color: @accent-color !important;
+    }
+    [data-testid="continueBtn"] > div > div {
+      color: @base !important;
+    }
+    [data-testid="continueBtn"] > div > svg > path {
+      fill: @base !important;
+    }
+
+    /* ... button under posts */
+    path[fill="hsl(211, 20%, 50%)"] {
+      fill: @subtext0;
+    }
+
+    /* pretty self explanatory, user mentions in the post create modal */
+    .mention {
+      color: @accent-color;
+    }
+
+    /* mentions in the notification tab (highlighted notifications) */
+    div[style^="background-color: rgb(0, 16, 64)"] {
+      background-color: fadeout(@accent-color, 70%) !important;
+    }
+
+    /* generic blue background color inline (used for buttons in notifications tab) */
+    button[style*="background-color: rgb(0, 133, 255)"] {
+      background-color: @accent-color !important;
+    }
+    /* contrast fix for above */
+    button[style*="background-color: rgb(0, 133, 255)"] > div > div {
+      color: @base !important;
+    }
+
+    /* other button in notifications tab, inner text */
+    div[style*="color: rgb(82, 172, 254)"] {
+      color: @accent-color !important;
+    }
+
+    /* "No notifications yet!" text in the notifications tab */
+    div[style*="color: rgb(141, 142, 150)"] {
+      color: @subtext0 !important;
+    }
+
+    /* login: wrong password highlight */
+    .r-w7hjet {
+      background-color: @red;
+    }
+
+    /* please verify your email popup (green checkmark) */
+    circle[fill="#20BC07"] {
+      fill: @green;
+    }
+
+    /* toggle circle */
+    [style*="background-color: rgb(185, 185, 193)"] {
+      background-color: @overlay2 !important;
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

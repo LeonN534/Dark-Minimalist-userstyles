@@ -1,0 +1,258 @@
+/* ==UserStyle==
+@name MDN Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/mdn
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/mdn
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/mdn/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Amdn
+@description Minimalist design using the Dark Minimalist color palette for MDN
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+#darkMinimalist(@lookup, @accent) {
+  @rosewater: @darkMinimalist[@@lookup][@rosewater];
+  @flamingo: @darkMinimalist[@@lookup][@flamingo];
+  @pink: @darkMinimalist[@@lookup][@pink];
+  @mauve: @darkMinimalist[@@lookup][@mauve];
+  @red: @darkMinimalist[@@lookup][@red];
+  @maroon: @darkMinimalist[@@lookup][@maroon];
+  @peach: @darkMinimalist[@@lookup][@peach];
+  @yellow: @darkMinimalist[@@lookup][@yellow];
+  @green: @darkMinimalist[@@lookup][@green];
+  @teal: @darkMinimalist[@@lookup][@teal];
+  @sky: @darkMinimalist[@@lookup][@sky];
+  @sapphire: @darkMinimalist[@@lookup][@sapphire];
+  @blue: @darkMinimalist[@@lookup][@blue];
+  @lavender: @darkMinimalist[@@lookup][@lavender];
+  @text: @darkMinimalist[@@lookup][@text];
+  @subtext1: @darkMinimalist[@@lookup][@subtext1];
+  @subtext0: @darkMinimalist[@@lookup][@subtext0];
+  @overlay2: @darkMinimalist[@@lookup][@overlay2];
+  @overlay1: @darkMinimalist[@@lookup][@overlay1];
+  @overlay0: @darkMinimalist[@@lookup][@overlay0];
+  @surface2: @darkMinimalist[@@lookup][@surface2];
+  @surface1: @darkMinimalist[@@lookup][@surface1];
+  @surface0: @darkMinimalist[@@lookup][@surface0];
+  @base: @darkMinimalist[@@lookup][@base];
+  @mantle: @darkMinimalist[@@lookup][@mantle];
+  @crust: @darkMinimalist[@@lookup][@crust];
+  @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+  color-scheme: if(@lookup = latte, light, dark);
+
+  ::selection {
+    background-color: fade(@accent-color, 30%);
+  }
+
+  input,
+  textarea {
+    &::placeholder {
+      color: @subtext0 !important;
+    }
+  }
+
+  --text-primary: @text;
+  --text-secondary: @subtext0;
+  --text-active: @overlay1;
+  --text-inactive: fadeout(@subtext0, 40%);
+  --text-link: @accent-color;
+  --text-visited: lighten(saturate(@accent-color, -20%), -20%);
+  --text-invert: @base;
+  --background-primary: @base;
+  --background-secondary: @crust;
+  --background-tertiary: @mantle;
+  --background-toc-active: @crust;
+  --background-mark-yellow: fadeout(@yellow, 60%);
+  --background-mark-green: fadeout(@green, 60%);
+  --background-information: fadeout(@blue, 90%);
+  --background-warning: fadeout(@maroon, 90%);
+  --background-critical: fadeout(@red, 90%);
+  --background-success: fadeout(@green, 90%);
+  --border-primary: @surface2;
+  --border-secondary: @surface1;
+  --button-primary-default: @text;
+  --button-primary-hover: @subtext0;
+  --button-primary-active: @overlay0;
+  --button-primary-inactive: @text;
+  --button-secondary-default: @surface2;
+  --button-secondary-hover: @surface1;
+  --button-secondary-active: @overlay0;
+  --button-secondary-inactive: @surface2;
+  --button-secondary-border-focus: @blue;
+  --button-secondary-border-red: @red;
+  --button-secondary-border-red-focus: @maroon;
+  --icon-primary: @text;
+  --icon-secondary: @subtext0;
+  --icon-information: @blue;
+  --icon-warning: @peach;
+  --icon-critical: @maroon;
+  --icon-success: @green;
+  --accent-primary: @accent-color;
+  --accent-primary-engage: fadeout(@accent-color, 90%);
+  --accent-secondary: @accent-color;
+  --accent-tertiary: fadeout(saturate(@accent-color, 10%), 90%);
+  --shadow-01: 0 1px 2px fadeout(@text, 80%);
+  --shadow-02: 0 1px 6px fadeout(@text, 80%);
+  --focus-01: 0 0 0 3px fadeout(@text, 50%);
+  --field-focus-border: @text;
+  --code-token-tag: @mauve;
+  --code-token-punctuation: @overlay2;
+  --code-token-attribute-name: @blue;
+  --code-token-attribute-value: @peach;
+  --code-token-comment: @overlay0;
+  --code-token-default: @text;
+  --code-token-selector: @lavender;
+  --code-token-class-selector: @yellow;
+  --code-token-pseudo-class: @pink;
+  --code-token-variable-2: @rosewater;
+  --code-token-at-rule: @flamingo;
+  --code-token-meta: @overlay1;
+  --code-background-inline: @mantle;
+  --code-background-block: @mantle;
+  --notecard-link-color: @subtext1;
+  --scrollbar-bg: transparent;
+  --scrollbar-color: hsla(0, 0%, 100%, 0.25);
+  --category-color: @sky;
+  --category-color-background: fadeout(@sky, 60%);
+  --code-color: lighten(@sky, 10%);
+  --mark-color: darken(@sky, 30%);
+  --plus-accent-color: @maroon;
+  --html-accent-color: @red;
+  --css-accent-color: @sapphire;
+  --js-accent-color: @yellow;
+  --http-accent-color: @green;
+  --apis-accent-color: @mauve;
+  --learn-accent-color: @pink;
+  --plus-code-color: saturate(@maroon, 10%);
+  --html-code-color: saturate(@red, 10%);
+  --css-code-color: saturate(@sapphire, 10%);
+  --js-code-color: saturate(@yellow, 10%);
+  --http-code-color: saturate(@green, 10%);
+  --apis-code-color: saturate(@mauve, 10%);
+  --learn-code-color: saturate(@pink, 10%);
+  --plus-mark-color: darken(@maroon, 30%);
+  --html-mark-color: darken(@red, 30%);
+  --css-mark-color: darken(@sapphire, 30%);
+  --js-mark-color: darken(@yellow, 30%);
+  --http-mark-color: darken(@green, 30%);
+  --apis-mark-color: darken(@mauve, 30%);
+  --learn-mark-color: darken(@pink, 30%);
+  --plus-accent-background-color: fadeout(@maroon, 70%);
+  --html-accent-background-color: fadeout(@red, 70%);
+  --css-accent-background-color: fadeout(@sapphire, 70%);
+  --js-accent-background-color: fadeout(@yellow, 70%);
+  --http-accent-background-color: fadeout(@green, 70%);
+  --apis-accent-background-color: fadeout(@mauve, 70%);
+  --learn-accent-background-color: fadeout(@pink, 70%);
+  --plus-accent-engage: fadeout(@maroon, 30%);
+  --html-accent-engage: fadeout(@red, 30%);
+  --css-accent-engage: fadeout(@sapphire, 30%);
+  --js-accent-engage: fadeout(@yellow, 30%);
+  --http-accent-engage: fadeout(@green, 30%);
+  --apis-accent-engage: fadeout(@mauve, 30%);
+  --learn-accent-engage: fadeout(@pink, 30%);
+  --modal-backdrop-color: fadeout(@mantle, 30%);
+  --selection-background-color: fadeout(@surface2, 40%);
+  --text-primary-red: @red;
+  --text-primary-green: @green;
+  --text-primary-blue: @blue;
+  --text-primary-yellow: @yellow;
+  --collections-link: @flamingo;
+  --collections-header: darken(@red, 30%);
+  --collections-mandala: darken(@red, 20%);
+  --collections-icon: darken(@red, 10%);
+  --updates-link: @sky;
+  --updates-header: @crust;
+  --updates-mandala: lighten(@sky, 10%);
+  --updates-icon: @sky;
+  --ai-help-link: @green;
+  --ai-help-header: @crust;
+  --ai-help-mandala: lighten(@green, 10%);
+  --ai-help-icon: @green;
+  --form-limit-color: @overlay0;
+  --form-limit-color-emphasis: @overlay1;
+  --form-invalid-color: @red;
+  --form-invalid-focus-color: @flamingo;
+  --form-invalid-focus-effect-color: fadeout(@flamingo, 80%);
+  --baseline-high-bg: hsl(
+    hue(@green),
+    saturation(@green),
+    lightness(@surface0)
+  );
+  --baseline-high-engine-bg: hsl(
+    hue(@green),
+    saturation(@green),
+    lightness(@base)
+  );
+  --baseline-high-check: @green;
+  --baseline-low-bg: hsl(hue(@blue), saturation(@blue), lightness(@surface0));
+  --baseline-low-engine-bg: hsl(
+    hue(@blue),
+    saturation(@blue),
+    lightness(@base)
+  );
+  --baseline-low-check: @blue;
+  --baseline-low-pill-bg: @sapphire;
+  --baseline-low-pill-color: @base;
+  --baseline-limited-bg: @surface0;
+  --baseline-limited-engine-bg: @base;
+  --baseline-limited-check: @green;
+  --baseline-limited-cross: @peach;
+}
+
+@-moz-document domain("developer.mozilla.org") {
+  .light {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  .dark {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  /* stylelint-disable selector-not-notation */
+  @media (prefers-color-scheme: light) {
+    :root:not(.light):not(.dark) {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not(.light):not(.dark) {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+  /* stylelint-enable selector-not-notation */
+}
+
+@-moz-document domain("interactive-examples.mdn.mozilla.net") {
+  .theme-light {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+  .theme-dark {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

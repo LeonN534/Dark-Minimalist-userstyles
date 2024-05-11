@@ -1,0 +1,472 @@
+/* ==UserStyle==
+@name Pronouns.page Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/pronouns.page
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/pronouns.page
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/pronouns.page/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Apronouns.page
+@description Minimalist design using the Dark Minimalist color palette for Pronouns.page
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain('pronouns.page') {
+  body:not([data-theme="dark"]) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  body[data-theme="dark"],
+  body[data-theme="dark"]:not(.reduced-colours) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    background-color: @base !important;
+    color: @text !important;
+
+    --bs-body-color: @text;
+    --bs-body-bg: @base;
+    --bs-white-rgb: #rgbify(@crust) [];
+    --bs-primary-rgb: #rgbify(@accent-color) [];
+    --bs-secondary-rgb: #rgbify(@overlay0) [];
+    --bs-secondary-color: @subtext0;
+    --bs-tertiary-bg: @crust;
+    --bs-success-text-emphasis: @green;
+    --bs-info-text-emphasis: @sapphire;
+    --bs-warning-text-emphasis: @yellow;
+    --bs-danger-text-emphasis: @red;
+    --bs-light-text-emphasis: @text;
+    --bs-dark-text-emphasis: @subtext1;
+    --bs-heading-color: @text;
+    --bs-form-valid-color: @green;
+    --bs-form-valid-border-color: @green;
+    --bs-form-invalid-color: @red;
+    --bs-form-invalid-border-color: @red;
+
+    /* Buttons */
+
+    .btn-primary {
+      color: @crust;
+      --bs-btn-bg: @accent-color;
+    }
+
+    .btn-primary,
+    .btn-outline-primary {
+      --bs-btn-hover-bg: @accent-color;
+      --bs-btn-border-color: @accent-color;
+      --bs-btn-hover-border-color: @accent-color;
+      --bs-btn-active-bg: @accent-color;
+      --bs-btn-active-border-color: @accent-color;
+      --bs-btn-disabled-color: @accent-color;
+      --bs-btn-disabled-bg: transparent;
+      --bs-btn-disabled-border-color: @accent-color;
+    }
+
+    .btn-outline-primary {
+      color: @text;
+
+      &:hover {
+        color: @crust;
+      }
+    }
+
+    .btn-success {
+      --bs-btn-color: @crust;
+      --bs-btn-bg: @green;
+      --bs-btn-border-color: @green;
+      --bs-btn-hover-color: @crust;
+      --bs-btn-hover-bg: darken(@green, 5%);
+      --bs-btn-hover-border-color: darken(@green, 5%);
+      --bs-btn-active-color: @crust;
+      --bs-btn-active-bg: darken(@green, 5%);
+      --bs-btn-active-border-color: darken(@green, 5%);
+      --bs-btn-disabled-color: @text;
+      --bs-btn-disabled-bg: @green;
+      --bs-btn-disabled-border-color: @green;
+    }
+
+    .btn-outline-success {
+      color: @green;
+
+      &:hover {
+        color: @crust;
+      }
+
+      --bs-btn-color: @green;
+      --bs-btn-border-color: @green;
+      --bs-btn-hover-color: @crust;
+      --bs-btn-hover-bg: @green;
+      --bs-btn-hover-border-color: @green;
+      --bs-btn-active-color: @crust;
+      --bs-btn-active-bg: @green;
+      --bs-btn-active-border-color: @green;
+      --bs-btn-disabled-color: @green;
+      --bs-btn-disabled-border-color: @green;
+    }
+
+    .btn-outline-danger {
+      --bs-btn-color: @red;
+      --bs-btn-border-color: @red;
+      --bs-btn-hover-color: @crust;
+      --bs-btn-hover-bg: @red;
+      --bs-btn-hover-border-color: @red;
+      --bs-btn-active-color: @crust;
+      --bs-btn-active-bg: @red;
+      --bs-btn-active-border-color: @red;
+      --bs-btn-disabled-color: @red;
+      --bs-btn-disabled-border-color: @red;
+    }
+
+    .btn-secondary {
+      --bs-btn-color: @text;
+      --bs-btn-bg: @overlay0;
+      --bs-btn-border-color: @overlay0;
+      --bs-btn-hover-color: @text;
+      --bs-btn-hover-bg: @surface2;
+      --bs-btn-hover-border-color: @surface2;
+      --bs-btn-active-color: @text;
+      --bs-btn-active-bg: @surface2;
+      --bs-btn-active-border-color: @surface2;
+      --bs-btn-disabled-color: @text;
+      --bs-btn-disabled-bg: @overlay0;
+      --bs-btn-disabled-border-color: @overlay0;
+    }
+
+    .btn-outline-secondary {
+      --bs-btn-color: @overlay0;
+      --bs-btn-border-color: @overlay0;
+      --bs-btn-hover-color: @text;
+      --bs-btn-hover-bg: @overlay0;
+      --bs-btn-hover-border-color: @overlay0;
+      --bs-btn-active-color: @text;
+      --bs-btn-active-bg: @overlay0;
+      --bs-btn-active-border-color: @overlay0;
+      --bs-btn-disabled-color: @overlay0;
+      --bs-btn-disabled-border-color: @overlay0;
+    }
+
+    .btn-light {
+      &,
+      &:disabled,
+      &.disabled {
+        color: @text;
+        background-color: @crust;
+      }
+    }
+    .btn-dark,
+    .btn-outline-dark:hover {
+      color: @crust;
+      background-color: @text;
+    }
+    .btn-outline-dark {
+      color: @text;
+    }
+
+    /* Inputs */
+
+    .form-check-input:checked {
+      background-color: @accent-color !important;
+      border-color: @accent-color !important;
+    }
+
+    .form-control {
+      color: @text;
+      background-color: @mantle;
+      border-color: @surface0;
+    }
+
+    .dropdown-menu {
+      color: @text;
+      background-color: @mantle;
+      border-color: @surface0;
+
+      .dropdown-item {
+        color: @text;
+
+        &:hover,
+        &:focus {
+          background-color: @crust;
+        }
+      }
+    }
+
+    .vdp-datepicker__calendar {
+      background-color: @crust;
+      border-color: @surface0;
+
+      .disabled {
+        color: @subtext0;
+      }
+
+      .prev::after {
+        border-right-color: @text;
+      }
+      .next::after {
+        border-left-color: @text;
+      }
+
+      header span:not(.disabled):hover {
+        background-color: @text;
+        color: @crust;
+
+        &.prev::after {
+          border-right-color: @crust;
+        }
+        &.next::after {
+          border-left-color: @crust;
+        }
+      }
+
+      .cell.selected {
+        background-color: @accent-color;
+        color: @crust;
+      }
+      .cell:not(.blank, .disabled):hover {
+        border-color: @accent-color;
+      }
+    }
+
+    /* Header */
+
+    header .nav-item {
+      color: @text !important;
+
+      &:hover {
+        color: @accent-color !important;
+      }
+    }
+
+    .nav-custom:not(.nav-custom-start) .nav-item {
+      border-color: @surface0;
+
+      &:hover {
+        border-bottom-color: @accent-color !important;
+      }
+
+      &.btn.active,
+      &.btn:hover {
+        border-bottom-color: @accent-color !important;
+      }
+    }
+
+    .nav-custom-start .btn,
+    .nav-custom .btn {
+      border-inline-start-color: @surface2 !important;
+
+      &:hover,
+      &.active {
+        color: lighten(@accent-color, 5%) !important;
+        border-inline-start-color: @accent-color !important;
+      }
+    }
+
+    .hamburger-menu .btn-hamburger {
+      background-color: @crust !important;
+      border-color: @surface0;
+    }
+
+    .card {
+      background-color: @mantle;
+    }
+
+    /* Footer */
+
+    .separator {
+      > .mask::after {
+        box-shadow: 0 0 10px @text;
+      }
+
+      > span {
+        box-shadow: 0 2px 4px @text;
+        background: @text;
+        color: @crust;
+      }
+    }
+
+    /* Calendar */
+
+    .list-group-flare > :first-child {
+      border-top-color: @accent-color !important;
+    }
+    .list-group-item {
+      color: @text !important;
+      background-color: @mantle !important;
+      border-color: @surface0 !important;
+    }
+    .calendar > .day.day-event {
+      border-color: @accent-color;
+
+      &:hover {
+        background-color: darken(@accent-color, 10%) !important;
+
+        .day-number {
+          color: @crust;
+          text-shadow: none;
+        }
+      }
+
+      &.day-event-1 {
+        background-color: @accent-color;
+        color: @crust;
+      }
+    }
+
+    /* Dictionary */
+    .page-link {
+      color: @text;
+      background-color: @crust;
+      border-color: @surface0;
+    }
+    .page-item.active .page-link {
+      color: @crust;
+      background-color: @accent-color;
+      border-color: @accent-color;
+    }
+    .page-item.disabled .page-link {
+      color: @text;
+      background-color: @base;
+      border-color: @surface0;
+    }
+    table {
+      --bs-table-color: @text !important;
+      --bs-table-striped-color: @text !important;
+      --bs-table-hover-color: @text !important;
+      --bs-table-hover-bg: @surface1 !important;
+      --bs-table-striped-bg: @surface0 !important;
+    }
+
+    /* Other */
+
+    .bg-light {
+      background-color: @mantle !important;
+    }
+    .bg-dark {
+      background-color: @text !important;
+    }
+    .bg-white {
+      background-color: @crust !important;
+    }
+    .text-dark {
+      color: @text !important;
+    }
+    .colour-default {
+      color: @text !important;
+    }
+    .colour-pink {
+      color: @accent-color !important;
+    }
+    .colour-orange {
+      color: @peach !important;
+    }
+    .colour-red {
+      color: @red !important;
+    }
+    .colour-grey {
+      color: @overlay2 !important;
+    }
+
+    .alert-light {
+      background-color: @surface2;
+      color: @text;
+    }
+    .alert-info {
+      background-color: fade(@sapphire, 30%);
+      border-color: @sapphire;
+      color: @text;
+    }
+
+    .nav-pills {
+      --bs-nav-pills-link-active-bg: @accent-color;
+      --bs-nav-pills-link-active-color: @crust;
+    }
+
+    .badge {
+      --bs-badge-color: @text;
+    }
+
+    .border {
+      border-color: @surface0 !important;
+    }
+
+    a {
+      color: @accent-color;
+
+      &:hover {
+        color: lighten(@accent-color, 5%);
+      }
+    }
+
+    code {
+      color: @crust;
+      background-color: @accent-color;
+      border-color: transparent;
+    }
+
+    /* Share QR code */
+    [fill="#ff95bb"] {
+      fill: @accent-color;
+    }
+
+    mark,
+    .mark {
+      background-color: fade(@yellow, 50%);
+      color: @text;
+    }
+  }
+}
+
+#rgbify(@color) {
+  @rgb-raw: red(@color), green(@color), blue(@color);
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

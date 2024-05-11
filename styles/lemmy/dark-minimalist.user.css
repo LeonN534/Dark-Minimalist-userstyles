@@ -1,0 +1,253 @@
+/* ==UserStyle==
+@name Lemmy Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/lemmy
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/lemmy
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/lemmy/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Alemmy
+@description Minimalist design using the Dark Minimalist color palette for Lemmy
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("lemmy.ml"),
+	domain("lemmy.world") {
+  @media (prefers-color-scheme: light) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    [data-bs-theme="dark"] {
+      --bs-body-color: @text;
+      --bs-body-bg: @base;
+      --bs-emphasis-color: @subtext1;
+      --bs-secondary-color: @subtext0;
+      --bs-secondary-bg: @mantle;
+      --bs-tertiary-color: @crust;
+      --bs-tertiary-bg: @crust;
+      --bs-primary-text-emphasis: @overlay0;
+      --bs-secondary-text-emphasis: @overlay1;
+      --bs-success-text-emphasis: @green;
+      --bs-info-text-emphasis: @sky;
+      --bs-warning-text-emphasis: @yellow;
+      --bs-danger-text-emphasis: @red;
+      --bs-light-text-emphasis: @overlay2;
+      --bs-dark-text-emphasis: @overlay2;
+      --bs-primary-bg-subtle: @base;
+      --bs-secondary-bg-subtle: @mantle;
+      --bs-success-bg-subtle: @green;
+      --bs-info-bg-subtle: @accent-color;
+      --bs-warning-bg-subtle: @yellow;
+      --bs-danger-bg-subtle: @red;
+      --bs-light-bg-subtle: @base;
+      --bs-dark-bg-subtle: @base;
+      --bs-primary-border-subtle: @accent-color;
+      --bs-secondary-border-subtle: @accent-color;
+      --bs-success-border-subtle: @green;
+      --bs-info-border-subtle: @accent-color;
+      --bs-warning-border-subtle: @yellow;
+      --bs-danger-border-subtle: @red;
+      --bs-light-border-subtle: @crust;
+      --bs-dark-border-subtle: @crust;
+      --bs-heading-color: @text;
+      --bs-card-border-color: @crust;
+      --bs-link-color: @blue;
+      --bs-link-hover-color: @maroon;
+      --bs-code-color: @lavender;
+      --bs-highlight-color: @accent-color;
+      --bs-highlight-bg: @mantle;
+      --bs-border-color: @crust;
+      --bs-form-valid-color: @green;
+      --bs-form-valid-border-color: @green;
+      --bs-form-invalid-color: @red;
+      --bs-form-invalid-border-color: @red;
+      --bs-dark-rgb: @accent-color;
+      --bs-btn-bg: @base;
+    }
+
+    body {
+      color: @accent-color;
+      background-color: @base;
+    }
+
+    .nav-link {
+      color: @accent-color;
+    }
+    .card {
+      --bs-card-cap-bg: @mantle;
+      --bs-card-title-color: @text;
+      --bs-card-subtitle-color: @subtext1;
+      --bs-card-color: @text;
+      --bs-card-cap-color: @mantle;
+      --bs-card-bg: @crust;
+    }
+
+    .form-control {
+      color: @text;
+      background-color: @crust;
+      border-color: @crust;
+    }
+
+    .btn-secondary {
+      --bs-btn-color: @text;
+      --bs-btn-bg: @base;
+      --bs-btn-border-color: @overlay1;
+      --bs-btn-hover-color: @accent-color;
+      --bs-btn-hover-bg: @crust;
+      --bs-btn-hover-border-color: @overlay2;
+      --bs-btn-active-color: @text;
+      --bs-btn-active-bg: @accent-color;
+      --bs-btn-active-border-color: @crust;
+      --bs-btn-active-shadow: inset 0 3px 5px @crust;
+      --bs-btn-disabled-color: @red;
+      --bs-btn-disabled-bg: @crust;
+      --bs-btn-disabled-border-color: @mantle;
+    }
+
+    .table > :not(caption) > * > * {
+      color: @text;
+      background-color: @mantle;
+    }
+
+    .dropdown-menu-dark {
+      --bs-dropdown-color: @text;
+      --bs-dropdown-bg: @crust;
+      --bs-dropdown-border-color: @mantle;
+      --bs-dropdown-box-shadow: @mantle;
+      --bs-dropdown-link-color: @blue;
+      --bs-dropdown-link-hover-color: @accent-color;
+      --bs-dropdown-divider-bg: @overlay0;
+      --bs-dropdown-link-hover-bg: @crust;
+      --bs-dropdown-link-active-color: @accent-color;
+      --bs-dropdown-link-active-bg: @mantle;
+      --bs-dropdown-link-disabled-color: @red;
+      --bs-dropdown-header-color: @text;
+    }
+
+    .form-select {
+      color: @text;
+      background-color: @mantle;
+      border-color: @crust;
+    }
+
+    .btn-outline-secondary {
+      --bs-btn-color: @text;
+      --bs-btn-border-color: @mantle;
+      --bs-btn-hover-color: @accent-color;
+      --bs-btn-hover-bg: @crust;
+      --bs-btn-hover-border-color: @overlay0;
+      --bs-btn-active-color: @accent-color;
+      --bs-btn-active-bg: @crust;
+      --bs-btn-active-border-color: @crust;
+      --bs-btn-active-shadow: inset 0 3px 5px @crust;
+      --bs-btn-disabled-color: @red;
+      --bs-btn-disabled-border-color: @mantle;
+    }
+
+    .nav-tabs .nav-link.active,
+    .nav-tabs .nav-item.show .nav-link {
+      color: @accent-color;
+      background-color: @crust;
+      border-color: @mantle;
+    }
+
+    .dropdown-item {
+      color: @text;
+      background-color: @crust;
+    }
+
+    .dropdown-menu {
+      --bs-dropdown-color: @text;
+      --bs-dropdown-bg: @crust;
+      --bs-dropdown-border-color: @mantle;
+      --bs-dropdown-box-shadow: @mantle;
+      --bs-dropdown-link-color: @blue;
+      --bs-dropdown-link-hover-color: @accent-color;
+      --bs-dropdown-divider-bg: @overlay0;
+      --bs-dropdown-link-hover-bg: @crust;
+      --bs-dropdown-link-active-color: @accent-color;
+      --bs-dropdown-link-active-bg: @mantle;
+      --bs-dropdown-link-disabled-color: @red;
+      --bs-dropdown-header-color: @text;
+    }
+
+    a {
+      color: @accent-color;
+    }
+
+    .text-bg-primary {
+      color: @text;
+    }
+
+    .text-muted {
+      color: @accent-color;
+    }
+    .text-bg-light {
+      color: @text !important;
+      background-color: rgba(#rgbify(@mantle) [], 1) !important;
+    }
+  }
+}
+
+#rgbify(@color) {
+  @rgb-raw: red(@color), green(@color), blue(@color);
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

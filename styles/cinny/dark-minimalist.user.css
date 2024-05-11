@@ -1,0 +1,269 @@
+/* ==UserStyle==
+@name Cinny Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/cinny
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/cinny
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/cinny/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Acinny
+@description Minimalist design using the Dark Minimalist color palette for Cinny
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("cinny.in") {
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    --bg-surface: @base;
+    --bg-surface-transparent: fadeout(@base, 100%);
+    --bg-surface-low: @mantle;
+    --bg-surface-low-transparent: fadeout(@mantle, 100%);
+    --bg-surface-extra-low: @crust;
+    --bg-surface-extra-low-transparent: fadeout(@crust, 100%);
+    --bg-surface-border: fadeout(@crust, 80%);
+
+    --bg-surface-hover: @surface0;
+    --bg-surface-active: @surface1;
+
+    --bg-overlay: fadeout(@crust, 40%);
+    --bg-overlay-low: fadeout(@crust, 20%);
+
+    --bg-primary: @accent-color;
+    --bg-primary-hover: fadeout(@accent-color, 20%);
+    --bg-primary-active: fadeout(@accent-color, 30%);
+    --bg-primary-border: fadeout(@accent-color, 62%);
+
+    --bg-tooltip: @surface0;
+    --bg-badge: @lavender;
+
+    --bg-positive: @green;
+    --bg-positive-hover: fadeout(@green, 92%);
+    --bg-positive-active: fadeout(@green, 85%);
+    --bg-positive-border: fadeout(@green, 60%);
+    --bg-caution: @peach;
+    --bg-caution-hover: fadeout(@peach, 92%);
+    --bg-caution-active: fadeout(@peach, 85%);
+    --bg-caution-border: fadeout(@peach, 60%);
+    --bg-danger: @maroon;
+    --bg-danger-hover: fadeout(@maroon, 95%);
+    --bg-danger-active: fadeout(@maroon, 90%);
+    --bg-danger-border: fadeout(@maroon, 80%);
+
+    --bg-ping: fadeout(@green, 60%);
+    --bg-ping-hover: fadeout(@green, 50%);
+
+    --tc-surface-high: @text;
+    --tc-surface-normal: @text;
+    --tc-surface-normal-low: @subtext1;
+    --tc-surface-low: @subtext0;
+    --tc-primary-high: @crust;
+    --tc-primary-normal: @text;
+    --tc-primary-low: @subtext1;
+
+    --tc-tooltip: @subtext0;
+    --tc-code: @mauve;
+    --tc-link: @rosewater;
+    --tc-badge: @crust;
+
+    --tc-positive-high: @green;
+    --tc-positive-normal: @green;
+    --tc-positive-low: @green;
+    --tc-caution-high: @peach;
+    --tc-caution-normal: @peach;
+    --tc-caution-low: @peach;
+    --tc-danger-high: @maroon;
+    --tc-danger-normal: @maroon;
+    --tc-danger-low: @maroon;
+
+    --ic-surface-high: @text;
+    --ic-surface-normal: @text;
+    --ic-surface-low: @subtext1;
+    --ic-primary-high: @text;
+    --ic-primary-normal: @crust;
+
+    --ic-positive-high: @green;
+    --ic-positive-normal: @maroon;
+    --ic-caution-high: @peach;
+    --ic-caution-normal: @peach;
+    --ic-danger-high: @maroon;
+    --ic-danger-normal: @maroon;
+
+    --mx-uc-1: @blue;
+    --mx-uc-2: @pink;
+    --mx-uc-3: @teal;
+    --mx-uc-4: @red;
+    --mx-uc-5: @peach;
+    --mx-uc-6: @sky;
+    --mx-uc-7: @mauve;
+    --mx-uc-8: @green;
+
+    --oq6d070: @mantle;
+    --oq6d071: @base;
+    --oq6d072: @surface0;
+    --oq6d073: @surface1;
+    --oq6d074: @text;
+    --oq6d075: @base;
+    --oq6d076: @surface0;
+    --oq6d077: @surface1;
+    --oq6d078: @surface2;
+    --oq6d079: @text;
+    --oq6d07a: @mantle;
+    --oq6d07b: @base;
+    --oq6d07c: @surface0;
+    --oq6d07d: @surface1;
+    --oq6d07e: @text;
+
+    --oq6d07f: @subtext0;
+    --oq6d07g: @overlay2;
+    --oq6d07h: @overlay1;
+    --oq6d07i: @overlay0;
+
+    --oq6d07j: fadeout(@accent-color, 40%);
+    --oq6d07k: fadeout(@accent-color, 50%);
+    --oq6d07l: fadeout(@accent-color, 60%);
+    --oq6d07m: fadeout(@accent-color, 70%);
+    --oq6d07n: fadeout(@accent-color, 80%);
+
+    --oq6d07o: @text;
+    --oq6d07p: @subtext1;
+    --oq6d07q: @subtext0;
+    --oq6d07r: @overlay2;
+    --oq6d07s: @overlay1;
+
+    --oq6d07t: @mantle;
+    --oq6d07u: @surface0;
+    --oq6d07v: @surface1;
+    --oq6d07w: @surface2;
+    --oq6d07x: @overlay0;
+    --oq6d07y: @subtext0;
+
+    --oq6d07z: fadeout(@green, 10%);
+    --oq6d0710: fadeout(@green, 5%);
+    --oq6d0711: fadeout(@green, 2.5%);
+    --oq6d0712: @green;
+    --oq6d0713: @surface0;
+    --oq6d0714: fadeout(@surface0, 2.5%);
+    --oq6d0715: fadeout(@surface0, 5%);
+    --oq6d0716: fadeout(@surface0, 10%);
+    --oq6d0717: fadeout(@surface0, 20%);
+
+    --oq6d0718: @green;
+
+    --oq6d0719: fadeout(@peach, 10%);
+    --oq6d071a: fadeout(@peach, 5%);
+    --oq6d071b: fadeout(@peach, 2.5%);
+    --oq60d71c: @peach;
+    --oq6d071d: fadeout(@surface0, 2.5%);
+    --oq6d071e: fadeout(@surface0, 5%);
+    --oq6d071f: fadeout(@surface0, 10%);
+    --oq6d071g: fadeout(@surface0, 20%);
+    --oq6d071h: fadeout(@surface0, 30%);
+
+    --oq6d071i: fadeout(@maroon, 10%);
+    --oq6d071j: fadeout(@maroon, 5%);
+    --oq6d071k: fadeout(@maroon, 2.5%);
+    --oq6d071l: @maroon;
+    --oq6d071m: fadeout(@surface0, 2.5%);
+    --oq6d071n: fadeout(@surface0, 5%);
+    --oq6d071o: fadeout(@surface0, 10%);
+    --oq6d071p: fadeout(@surface0, 20%);
+    --oq6d071q: fadeout(@surface0, 30%);
+    --oq6d071r: fadeout(@surface0, 40%);
+    --oq6d071s: fadeout(@maroon, 10%);
+
+    --oq6d071t: fadeout(@text, 50%);
+    --oq6d071u: @crust;
+    --oq6d071v: fadeout(@crust, 40%);
+
+    --prism-comment: @overlay0;
+    --prism-punctuation: @sky;
+    --prism-property: @yellow;
+    --prism-boolean: @peach;
+    --prism-selector: @green;
+    --prism-operator: @sky;
+    --prism-atrule: @pink;
+    --prism-keyword: @mauve;
+    --prism-regex: @maroon;
+  }
+
+  :root,
+  .oq6d071w,
+  .silver-theme,
+  ._15q3ngn0,
+  .prism-light {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  .dark-theme,
+  .dark-theme .text,
+  ._15q3ngn1,
+  .butter-theme,
+  .butter-theme .text,
+  ._15q3ngn2,
+  .prism-dark {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  @media (prefers-color-scheme: light) {
+    .system-theme {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    .system-theme,
+    .system-theme .text {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

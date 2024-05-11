@@ -1,0 +1,191 @@
+/* ==UserStyle==
+@name Hacker News Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/hacker-news
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/hacker-news
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/hacker-news/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Ahacker-news
+@description Minimalist design using the Dark Minimalist color palette for Hacker News
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("news.ycombinator.com") {
+  @media (prefers-color-scheme: light) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+  @media (prefers-color-scheme: dark) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    @orange: mix(@peach, @yellow);
+
+    [bgcolor="#fafaf0"],
+    [bgcolor="#f6f6ef"] {
+      background-color: @base;
+    }
+    body {
+      background-color: @mantle;
+    }
+
+    td {
+      color: @text;
+    }
+
+    /* Header */
+    td[bgcolor="#ff6600"] {
+      background-color: @orange;
+
+      .pagetop,
+      .pagetop a {
+        color: @crust !important;
+      }
+
+      img[src="y18.svg"] {
+        @svg: escape(
+          '<svg height="18" viewBox="4 4 188 188" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h188v188H4z" fill="@{peach}"/><path d="M73.252 45.01 96 92.401l22.748-47.391h19.566l-34.324 64.487v41.493H88.01v-41.493L53.686 45.01z" fill="@{crust}"/></svg>'
+        );
+        content: url("data:image/svg+xml,@{svg}");
+        border-color: @crust !important;
+      }
+
+      [color="#ffffff"] {
+        color: @crust;
+      }
+    }
+
+    td[bgcolor="#ffffaa"] {
+      background-color: @yellow;
+
+      td {
+        color: @crust;
+      }
+    }
+
+    .subtext,
+    .comhead {
+      &,
+      a:link,
+      a:visited {
+        color: @overlay2;
+      }
+    }
+
+    a:link {
+      color: @blue;
+    }
+    .hnmore a:link,
+    a:visited {
+      color: @lavender;
+    }
+
+    [color="#3c963c"] {
+      color: @green;
+    }
+
+    /* Story points */
+    .score {
+      color: @subtext0;
+    }
+
+    /* Story ranking number */
+    .title {
+      color: @lavender;
+    }
+
+    /* Comment text */
+    .commtext {
+      color: @text;
+    }
+
+    /* Comment hyperlinks */
+    .commtext a:link {
+      color: @sapphire;
+    }
+
+    /* Comment box */
+    input,
+    textarea,
+    select {
+      background-color: @mantle;
+      color: @text;
+      border-width: 1px;
+      border-style: solid;
+      border-color: @surface0;
+      border-radius: 2px;
+    }
+
+    input {
+      padding: 2px;
+    }
+
+    /* Poll questions */
+    td.comment > div > font {
+      color: @text;
+    }
+
+    /* Text post content */
+    .toptext {
+      color: @text;
+    }
+
+    .votearrow {
+      @svg: escape(
+        '<svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 32 16" width="32"><path d="M2 27 16-2l14 29z" fill="@{subtext0}"/></svg>'
+      );
+      background-image: url("data:image/svg+xml,@{svg}");
+    }
+
+    .yclinks {
+      color: @surface2;
+    }
+
+    b {
+      color: @text;
+    }
+
+    table[bgcolor="#ff6600"] {
+      background-color: @orange;
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

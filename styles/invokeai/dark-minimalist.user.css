@@ -1,0 +1,134 @@
+/* ==UserStyle==
+@name InvokeAI Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/invokeai
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/invokeai
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/invokeai/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Ainvokeai
+@description Minimalist design using the Dark Minimalist color palette for InvokeAI
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document regexp("http:\\/\\/(127\\.0\\.0\\.1|localhost):9090(.*)") {
+  @media (prefers-color-scheme: light) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+  @media (prefers-color-scheme: dark) {
+    #darkMinimalist(@darkFlavor, @accentColor);
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    :root,
+    [data-theme]:root {
+      --accent-color-dim: lighten(@accent-color, -10%);
+      --accent-color: @accent-color;
+      --accent-color-bright: lighten(@accent-color, 10%);
+      --accent-color-hover: var(--accent-color-bright);
+      --root-bg-color: @mantle;
+      --background-color: @base;
+      --background-color-light: @surface0;
+      --background-color-secondary: @base;
+      --text-color: @text;
+      --text-color-secondary: @subtext0;
+      --subtext-color: @subtext1;
+      --subtext-color-bright: @subtext0;
+      --border-color: @surface1;
+      --border-color-light: @surface2;
+      --tab-color: @accent-color;
+      --tab-list-bg: @accent-color;
+      --btn-delete-image: @red;
+      --status-good-color: @green;
+      --status-good-color-glow: lighten(@green, 10%);
+      --border-color-invalid: @red;
+      --box-shadow-color-invalid: lighten(@red, 5%);
+      --tab-panel-bg: var(--background-color-light);
+      --tab-hover-color: var(--background-color-secondary);
+      --tab-list-text: white;
+      --prompt-bg-color: var(--background-color-light);
+      --switch-bg-color: var(--background-color-secondary);
+      --btn-base-color: var(--background-color-light);
+      --btn-base-color-hover: var(--background-color-secondary);
+      --destructive-color: @red;
+      --slider-color: @lavender;
+      --slider-mark-color: var(--slider-color);
+      --switch-bg-active-color: var(--accent-color);
+      --console-icon-button-bg-color: var(--btn-base-color);
+      --console-icon-button-bg-color-hover: var(--btn-base-color-hover);
+      --console-bg-color: var(--background-color-light);
+      --svg-color: var(--text-color);
+      --btn-load-more: var(--background-color-light);
+      --tab-list-text-inactive: var(--text-color-secondary);
+    }
+
+    .invokeai-style-cache-1m5jnul {
+      --number-input-color: var(--text-color-secondary) !important;
+    }
+
+    .invoke-btn,
+    .invokeai__button[data-active],
+    .site-header-right-side .lang-select-btn[data-selected="true"],
+    .site-header-right-side .lang-select-btn[data-selected="true"]:hover,
+    button.chakra-button.invokeai__icon-button[data-selected="true"] {
+      --svg-color: var(--root-bg-color);
+      color: var(--root-bg-color) !important;
+    }
+
+    .invokeai-style-cache-vs1g06,
+    .invokeai-style-cache-vs1g06:hover {
+      background-color: var(--background-color-light);
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less

@@ -37,13 +37,11 @@ fs.readdir(stylesDirectory, (err, files) => {
 downloadStylesFiles("https://github.com/catppuccin/userstyles/tree/main/styles")
   .then(() => {
     // Extract the files and remove the zip file
-    extractAndRemove();
+    extractAndRemove().then(() => {
+      // Edit the palette of the original files
+      editOriginalFiles();
+    });
   })
   .catch((err) => {
     console.error(err);
   });
-
-// Edit the palette of the original files
-
-editOriginalFiles();
-

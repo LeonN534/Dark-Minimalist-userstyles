@@ -1,0 +1,185 @@
+/* ==UserStyle==
+@name Startpage Dark-Minimalist
+@namespace github.com/LeonN534/Dark-Minimalist-userstyles/styles/startpage
+@homepageURL https://github.com/LeonN534/Dark-Minimalist-userstyles/tree/main/styles/startpage
+@version 1.0.0
+@updateURL https://github.com/LeonN534/Dark-Minimalist-userstyles/raw/main/styles/startpage/dark-minimalist.user.css
+@supportURL https://github.com/LeonN534/Dark-Minimalist-userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Astartpage
+@description Minimalist design using the Dark Minimalist color palette for Startpage
+@author LeonN534
+@license MIT
+
+@preprocessor less
+@var select darkFlavor "Dark Flavor" ["dm:Dark Minimalist*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("startpage.com") {
+  @media (prefers-color-scheme: light) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #darkMinimalist(@darkFlavor, @accentColor);
+    }
+  }
+
+  #darkMinimalist(@lookup, @accent) {
+    @rosewater: @darkMinimalist[@@lookup][@rosewater];
+    @flamingo: @darkMinimalist[@@lookup][@flamingo];
+    @pink: @darkMinimalist[@@lookup][@pink];
+    @mauve: @darkMinimalist[@@lookup][@mauve];
+    @red: @darkMinimalist[@@lookup][@red];
+    @maroon: @darkMinimalist[@@lookup][@maroon];
+    @peach: @darkMinimalist[@@lookup][@peach];
+    @yellow: @darkMinimalist[@@lookup][@yellow];
+    @green: @darkMinimalist[@@lookup][@green];
+    @teal: @darkMinimalist[@@lookup][@teal];
+    @sky: @darkMinimalist[@@lookup][@sky];
+    @sapphire: @darkMinimalist[@@lookup][@sapphire];
+    @blue: @darkMinimalist[@@lookup][@blue];
+    @lavender: @darkMinimalist[@@lookup][@lavender];
+    @text: @darkMinimalist[@@lookup][@text];
+    @subtext1: @darkMinimalist[@@lookup][@subtext1];
+    @subtext0: @darkMinimalist[@@lookup][@subtext0];
+    @overlay2: @darkMinimalist[@@lookup][@overlay2];
+    @overlay1: @darkMinimalist[@@lookup][@overlay1];
+    @overlay0: @darkMinimalist[@@lookup][@overlay0];
+    @surface2: @darkMinimalist[@@lookup][@surface2];
+    @surface1: @darkMinimalist[@@lookup][@surface1];
+    @surface0: @darkMinimalist[@@lookup][@surface0];
+    @base: @darkMinimalist[@@lookup][@base];
+    @mantle: @darkMinimalist[@@lookup][@mantle];
+    @crust: @darkMinimalist[@@lookup][@crust];
+    @accent-color: @darkMinimalist[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtext0 !important;
+      }
+    }
+
+    &,
+    body {
+      --sx-accent: @accent-color;
+      --sx-background: @base;
+      --sx-border: @surface0;
+      --sx-tabLinkHover: @teal;
+      --sx-foreground: @text;
+      --sx-foregroundAlt: @subtext1;
+      --sx-foregroundEmphasis: lighten(@text, 10%);
+      --sx-popupBackground: @surface0;
+      --sx-popupForeground: @text;
+      --sx-popupForegroundEm: @text;
+      --sx-popupUrl: @blue;
+      --sx-buttonHighlight: @accent-color;
+      --sx-loadingBars: @mantle;
+      --sx-darkIcons: @crust;
+      --sx-arrowButtonBackground: @text;
+      --sx-arrowButtonForeground: @text;
+    }
+
+    .css-nguon6 button {
+      color: @accent-color;
+      border-color: @accent-color;
+    }
+
+    .css-fg9wif,
+    .header,
+    .wp-qi-sb__result,
+    .linkHover,
+    .footer__container {
+      background: @mantle !important;
+    }
+
+    body {
+      color: @text;
+    }
+
+    body,
+    .layout-web,
+    .layout-web__body,
+    .ex-qi-kp:not(.ex-qi-kp--light, .ex-qi-kp--night, .ex-qi-kp--air)
+      .sx-kp-infobox-wrap
+      .sx-infobox
+      tr:not(.sx-heading-row)
+      > *,
+    .w-gl {
+      background: @base !important;
+    }
+
+    .wp-qi-sb__result {
+      border-color: @mantle !important;
+    }
+
+    .wp-qi-sb__top-square-img {
+      border-bottom-color: @mantle !important;
+    }
+
+    /* fonts */
+    .w-gl__result-title,
+    .inline-nav-menu__link,
+    .wp-qi-sb__title {
+      color: @text !important;
+    }
+
+    .w-gl__result,
+    .search-filter-time__dropdown,
+    .search-filter-region__dropdown,
+    .search-filter-family__field-label,
+    .wp-qi-sb__extract {
+      color: @subtext1 !important;
+    }
+
+    .w-gl__result-url {
+      color: @accent-color !important;
+    }
+
+    .wp-qi-sb__expand-text,
+    .inline-nav-menu__link__active,
+    .inline-nav-menu__link:hover {
+      color: @green !important;
+    }
+
+    .inline-nav-menu__link__active,
+    .inline-nav-menu__link__post-link:hover {
+      border-bottom-color: @green !important;
+    }
+
+    .pagination .num--active {
+      background: @flamingo !important;
+      border-color: @flamingo !important;
+    }
+
+    .pagination__num:hover,
+    .pagination__next-prev-button:hover {
+      background: @blue !important;
+      border-color: @blue !important;
+    }
+
+    header {
+      background-color: @mantle !important;
+    }
+
+    .w-gl__result-title:visited {
+      color: @lavender !important;
+    }
+  }
+}
+
+/* prettier-ignore */
+@darkMinimalist: {
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+}
+
+// vim:ft=less
