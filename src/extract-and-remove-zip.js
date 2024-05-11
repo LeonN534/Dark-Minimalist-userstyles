@@ -15,6 +15,11 @@ export const extractAndRemove = async () => {
     let zip = new JSZip();
     const contents = await zip.loadAsync(data);
     let filePromises = Object.keys(contents.files).map(async filename => {
+      // Skip the file if its name ends with 'preview.webp'
+      if (filename.endsWith('preview.webp')) {
+        return;
+      }
+
       let file = contents.file(filename);
       if (file) {
         const content = await file.async('nodebuffer');
