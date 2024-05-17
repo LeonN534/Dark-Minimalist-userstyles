@@ -91,7 +91,7 @@
     --intro-background: @base !important;
     --intro-border: @accent-color !important;
     /* general background */
-    --app-background: @base !important;
+    --app-background: @mantle !important;
 
     /* CHAT LIST */
     /* nav bar background */
@@ -111,7 +111,7 @@
     /* chat list background */
     --background-default: @base !important;
     /* chat list header */
-    --panel-header-background: @mantle !important;
+    --panel-header-background: @crust !important;
     /* icons */
     --panel-header-icon: @text !important;
     /* other warnings (notifications) */
