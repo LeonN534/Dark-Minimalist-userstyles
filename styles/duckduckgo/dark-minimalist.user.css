@@ -145,15 +145,16 @@
     --theme-browser-comparison-table-icon-bg: @mantle !important;
     --theme-col-bg-ui: @mantle !important;
     --theme-col-bg-header-modal: @surface0 !important;
+    --theme-col-bg-button-primary: @blue !important;
 
     .footer,
-    .switch__knob .modal--dropdown--settings,
+    .footer--mobile,
+    .modal--dropdown--settings,
     .settings-dropdown--section,
     .frm__field,
     .frm__switch,
     .tileview .metabar--fixed,
     body,
-    .frm__switch__label.btn::after,
     .zci,
     html,
     .body--home,
@@ -435,6 +436,10 @@
       border-color: @surface0 !important;
     }
 
+    .open-in-app__deep-link {
+      color: @mantle;
+    }
+
     .modal__header__clear,
     .sep--before,
     .js-region-filter-clear,
@@ -495,11 +500,16 @@
     .frm__input,
     .frm__color__swatch {
       border-color: @surface0 !important;
+      background-color: @crust !important;
     }
 
     .sep--before::before,
     .sep {
       border-left-color: @surface2;
+    }
+
+    .header-wrap {
+      box-shadow: none !important;
     }
 
     .header-wrap,
@@ -584,11 +594,6 @@
       border-color: fade(@accent-color, 80%) !important;
       color: @base !important;
     }
-    .frm__switch__label {
-      background-color: @surface0;
-      border-color: @surface0;
-      color: @text !important;
-    }
     .set-bookmarklet__data {
       background-color: @surface2;
       color: @text;
@@ -599,13 +604,12 @@
       background-color: @overlay1;
     }
 
-    .metabar__dropdowns-wrap::before,
+    .metabar__dropdowns-wrap::before {
+      background-image: linear-gradient(90deg, @base, rgba(255, 255, 255, 0));
+    }
+
     .metabar__dropdowns-wrap::after {
-      background-image: linear-gradient(
-        90deg,
-        @surface0,
-        rgba(255, 255, 255, 0)
-      );
+      background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), @base);
     }
 
     .nav-menu__item__badge {
@@ -619,7 +623,19 @@
       border-bottom-color: @surface2;
     }
 
-    .footer {
+    .zcm--right-fade::before {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0), @mantle);
+    }
+    .search-filters-wrap::before {
+      background: linear-gradient(90deg, @base, rgba(255, 255, 255, 0));
+    }
+
+    .search-filters-wrap::after {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0), @base);
+    }
+
+    .footer,
+    .footer--mobile {
       border-top-color: @surface0;
     }
 
@@ -628,6 +644,10 @@
     .zcm__link:not(.dropdown__button).is-active,
     .set-main-footer {
       border-color: @accent-color !important;
+    }
+
+    #more-results {
+      background-color: @surface0 !important;
     }
 
     input,
@@ -769,18 +789,36 @@
     .frm__select::after {
       color: @accent-color !important;
     }
-    .switch {
-      background-color: @mantle !important;
+
+    .switch,
+    .frm__switch__label {
+      background-color: @crust !important;
     }
+
+    .frm__switch__label::after {
+      background: @overlay2 !important;
+    }
+
+    .is-checked .frm__switch__label::after {
+      background: @base !important;
+    }
+
     .switch__knob {
-      background: @text !important;
+      background: @overlay2 !important;
     }
+
+    .is-on .switch__knob {
+      background: @base !important;
+    }
+
     .switch.is-on {
       background-color: @accent-color !important;
     }
+
     .dropdown__switch.is-on::before {
       color: @base !important;
     }
+
     .search--header {
       background-color: @surface0;
       border-color: @surface0;
@@ -841,7 +879,7 @@
 
 /* prettier-ignore */
 @darkMinimalist: {
-  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d32; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
+  @dm:     { @rosewater: #fdddf5; @flamingo: #f9aee9; @pink: #f685e6; @mauve: #d484f4; @red: #f67d7b; @maroon: #f7859f; @peach: #f7a285; @yellow: #f3eb84; @green: #96f685; @teal: #85f7cc; @sky: #85f7f1; @sapphire: #a7f9e2; @blue: #85bef7; @lavender: #abc0f9; @text: #e5e5e5; @subtext1: #d0d1d3; @subtext0: #b9b9c0; @overlay2: #9e9da9; @overlay1: #868592; @overlay0: #757480; @surface2: #605f6b; @surface1: #4d4b56; @surface0: #3b3a44; @base: #2b2a33; @mantle: #211f27; @crust: #1c1b22; };
 }
 
 // vim:ft=less

@@ -136,7 +136,7 @@ async function propertyEditor(filePath) {
   // 	Text
   newData = newData.replace(/cdd6f4/g, "e5e5e5");
   // 	Subtext1
-  newData = newData.replace(/bac2de/g, "d0d1d32");
+  newData = newData.replace(/bac2de/g, "d0d1d3");
   // 	Subtext0
   newData = newData.replace(/a6adc8/g, "b9b9c0");
   // 	Overlay2
